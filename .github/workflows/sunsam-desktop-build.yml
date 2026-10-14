@@ -77,6 +77,8 @@ jobs:
         with:
           name: sunsam-code-${{ matrix.os }}-${{ matrix.arch }}
           if-no-files-found: error
+          # Los instaladores se publican en Releases; los artefactos sólo hacen falta unos días.
+          retention-days: 5
           path: |
             packages/desktop/dist/*.exe
             packages/desktop/dist/*.dmg
