@@ -199,7 +199,8 @@ describe("IntlProvider locale preference sync", () => {
     expect(
       shouldApplyLocaleBroadcastMessage({
         channel: "state:locale",
-        payload: "fr-FR",
+        // Sunsam: fr-FR es un idioma soportado; de-DE sigue sin soporte.
+        payload: "de-DE",
       }),
     ).toBe(false);
     expect(

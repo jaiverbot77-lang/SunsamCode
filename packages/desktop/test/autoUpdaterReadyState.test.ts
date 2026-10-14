@@ -289,7 +289,9 @@ describe("autoUpdater ready state sync", () => {
     );
   });
 
-  it("Linux arm64 主更新检查默认使用服务端 manifest provider", async () => {
+  // Sunsam: las actualizaciones salen de GitHub Releases (sunsamUpdateFeed.ts), no del manifest de Z.ai;
+  // aplicar ese manifest instalaría el ZCode oficial encima de Sunsam Code.
+  it.skip("Linux arm64 主更新检查默认使用服务端 manifest provider", async () => {
     mockProcessPlatform("linux");
     process.env["TEST_UPDATER_ARCH"] = "arm64";
 
@@ -316,7 +318,9 @@ describe("autoUpdater ready state sync", () => {
     expect(autoUpdaterMock.forceDevUpdateConfig).toBe(false);
   });
 
-  it("显式开启开发态自动更新时会覆盖本地版本并发起检查", async () => {
+  // Sunsam: las actualizaciones salen de GitHub Releases (sunsamUpdateFeed.ts), no del manifest de Z.ai;
+  // aplicar ese manifest instalaría el ZCode oficial encima de Sunsam Code.
+  it.skip("显式开启开发态自动更新时会覆盖本地版本并发起检查", async () => {
     appMock.isPackaged = false;
     appMock.getVersion.mockReturnValue("1.0.0");
     process.env["ZCODE_AUTO_UPDATE_DEV"] = "1";
@@ -336,7 +340,9 @@ describe("autoUpdater ready state sync", () => {
     expect(loggerInfoMock).toHaveBeenCalledWith("[auto-update] dev update enabled version=3.3.1");
   });
 
-  it("服务端 manifest provider 会按设置选择 stable 或 preview 通道", async () => {
+  // Sunsam: las actualizaciones salen de GitHub Releases (sunsamUpdateFeed.ts), no del manifest de Z.ai;
+  // aplicar ese manifest instalaría el ZCode oficial encima de Sunsam Code.
+  it.skip("服务端 manifest provider 会按设置选择 stable 或 preview 通道", async () => {
     settingServiceMock.get.mockResolvedValue({
       recentProjects: [],
       locale: "en-US",
@@ -394,7 +400,9 @@ describe("autoUpdater ready state sync", () => {
     });
   });
 
-  it("关闭接收 preview 后会重新检查 stable manifest 并更新可用版本状态", async () => {
+  // Sunsam: las actualizaciones salen de GitHub Releases (sunsamUpdateFeed.ts), no del manifest de Z.ai;
+  // aplicar ese manifest instalaría el ZCode oficial encima de Sunsam Code.
+  it.skip("关闭接收 preview 后会重新检查 stable manifest 并更新可用版本状态", async () => {
     const win = {
       isDestroyed: () => false,
       webContents: {
@@ -748,7 +756,9 @@ describe("autoUpdater ready state sync", () => {
     });
   });
 
-  it("启动时可覆盖服务端 manifest 接口 URL", async () => {
+  // Sunsam: las actualizaciones salen de GitHub Releases (sunsamUpdateFeed.ts), no del manifest de Z.ai;
+  // aplicar ese manifest instalaría el ZCode oficial encima de Sunsam Code.
+  it.skip("启动时可覆盖服务端 manifest 接口 URL", async () => {
     mockProcessPlatform("darwin");
     process.env["TEST_UPDATER_ARCH"] = "arm64";
     const { initAutoUpdater } = await import("../src/main/autoUpdater.js");
@@ -770,7 +780,9 @@ describe("autoUpdater ready state sync", () => {
     expect(autoUpdaterMock.checkForUpdates).toHaveBeenCalledTimes(1);
   });
 
-  it("manifest URL 覆盖不会切换到 generic feed", async () => {
+  // Sunsam: las actualizaciones salen de GitHub Releases (sunsamUpdateFeed.ts), no del manifest de Z.ai;
+  // aplicar ese manifest instalaría el ZCode oficial encima de Sunsam Code.
+  it.skip("manifest URL 覆盖不会切换到 generic feed", async () => {
     mockProcessPlatform("darwin");
     process.env["TEST_UPDATER_ARCH"] = "arm64";
     const { initAutoUpdater } = await import("../src/main/autoUpdater.js");

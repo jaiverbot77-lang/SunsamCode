@@ -99,7 +99,14 @@ export default defineConfig({
             "scripts/assert-safe-cua-helper-zip.test.mjs",
             "scripts/ci/ci-telemetry-keyword-guard.test.mjs",
           ],
-          exclude: ["packages/desktop/test/e2e/**", ...forkIsolatedTests],
+          exclude: [
+            "packages/desktop/test/e2e/**",
+            ...forkIsolatedTests,
+            // Sunsam: estas pruebas usan node:test y se ejecutan con `pnpm sunsam:test`.
+            "packages/sunsam-mesh/test/**",
+            "packages/ui/test/sunsam*.test.ts",
+            "packages/services/test/sunsamSettingsCompat.test.ts",
+          ],
           // Node 24/macOS 的 threads 全量运行可触发 V8 SIGSEGV；诊断时切换进程隔离，测试范围不变。
           pool: process.env.ZCODE_TEST_POOL === "forks" ? "forks" : "threads",
           maxWorkers: process.env.ZCODE_TEST_POOL === "forks" ? 2 : 4,

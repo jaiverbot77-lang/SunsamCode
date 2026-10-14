@@ -25,10 +25,11 @@ describe("desktop product identity", () => {
   it("ZCODE_ENV=test 使用可与生产版并排安装的 Preview 身份", () => {
     expect(resolveDesktopProductIdentity({ ZCODE_ENV: "test" })).toEqual({
       flavor: "preview",
-      appId: "dev.zcode.app.preview",
-      productName: "ZCode Preview",
-      linuxExecutableName: "zcode-preview",
-      linuxPackageName: "zcode-preview",
+      // Sunsam: identidad propia para instalarse junto a ZCode.
+      appId: "dev.sunsam.code.preview",
+      productName: "Sunsam Code Preview",
+      linuxExecutableName: "sunsam-code-preview",
+      linuxPackageName: "sunsam-code-preview",
       cuaHelperInstallVariant: "preview",
     });
   });
@@ -80,10 +81,10 @@ describe("desktop product identity", () => {
     );
     expect(desktopProductIdentities.production).toEqual({
       flavor: "production",
-      appId: "dev.zcode.app",
-      productName: "ZCode",
-      linuxExecutableName: "zcode",
-      linuxPackageName: "zcode",
+      appId: "dev.sunsam.code",
+      productName: "Sunsam Code",
+      linuxExecutableName: "sunsam-code",
+      linuxPackageName: "sunsam-code",
       cuaHelperInstallVariant: null,
     });
   });

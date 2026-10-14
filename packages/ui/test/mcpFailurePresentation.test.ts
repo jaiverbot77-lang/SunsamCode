@@ -51,8 +51,9 @@ describe("MCP failure presentation", () => {
   });
 
   it.each([
-    ["zh-CN" as const, "当前未登录，请先登录 ZCode。"],
-    ["en-US" as const, "You are not signed in. Sign in to ZCode to use this MCP server."],
+    // Sunsam: el nombre de producto se sustituye en todos los textos.
+    ["zh-CN" as const, "当前未登录，请先登录 Sunsam Code。"],
+    ["en-US" as const, "You are not signed in. Sign in to Sunsam Code to use this MCP server."],
   ])("localizes the not-authenticated diagnosis for %s", (locale, message) => {
     const html = renderToStaticMarkup(
       createElement(

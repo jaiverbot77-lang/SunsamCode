@@ -283,7 +283,8 @@ describe("ConversationShareLandingPage", () => {
       );
       expect(html).toContain(hint);
       expect(html).toContain(home);
-      expect(html).toContain('href="https://zcode.z.ai"');
+      // Sunsam: el enlace de descarga lleva a la web de Sunsam Code.
+      expect(html).toContain('href="https://jhonsu01.github.io/SunsamCode/"');
       expect(html).not.toContain('target="_blank"');
     },
   );
