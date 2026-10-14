@@ -35,7 +35,9 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         "@": resolve(REPO_ROOT, "packages/ui/src"),
-        "@zcode/shared": resolve(REPO_ROOT, "packages/shared/src/index.ts"),
+        // Sunsam: sin alias para @zcode/shared. El alias por prefijo convertía "@zcode/shared/mcp-apps" en
+        // ".../index.ts/mcp-apps" y el build fallaba; el paquete es dependencia del workspace y sus exports
+        // (raíz y subrutas) ya apuntan al código fuente.
         // Share 镜像不安装 @zcode/ui（它会带入 services/rpc 闭包），子路径导入必须显式指向源码。
         "@zcode/ui/useTheme": resolve(REPO_ROOT, "packages/ui/src/useTheme.ts"),
         "@zcode/ui/conversation-share-readonly": resolve(

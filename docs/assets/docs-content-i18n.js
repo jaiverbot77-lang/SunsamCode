@@ -1,3 +1,4 @@
+/* oxlint-disable eslint(max-lines) -- contenido de la documentación en 7 idiomas, no lógica. */
 // Traducciones de la documentación (docs/documentation.html). Los nombres de menús citan los
 // textos reales de la app en ese idioma; en alemán, italiano y japonés la app se muestra en
 // inglés, así que los menús aparecen en inglés.
