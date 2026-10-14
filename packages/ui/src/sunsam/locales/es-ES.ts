@@ -5206,8 +5206,6 @@ const esES: Record<string, string> = {
   "chat.workflowLaunch.settings.model": "Modelo de los subagentes",
   "chat.workflowLaunch.settings.limit": "A la vez, como máximo",
   "chat.workflowLaunch.settings.sessionModel": "modelo de la sesión",
-  "chat.workflowLaunch.settings.machineLimit": "límite de esta máquina",
-  "chat.workflowLaunch.settings.machineLimitValue": "{n} (límite de esta máquina)",
   "chat.toolCall.workflow.save.saving": "Guardando workflow",
   "chat.toolCall.workflow.save.saved": "Workflow guardado",
   "chat.toolCall.workflow.save.overwrite": "sobrescribir",
@@ -5530,8 +5528,6 @@ const esES: Record<string, string> = {
   "chat.toolCall.workflow.run.settings.model.noCatalog":
     "Este agente no tiene catálogo de modelos; los subagentes usan el modelo de la sesión.",
   "chat.toolCall.workflow.run.settings.limit": "Subagentes a la vez, como máximo",
-  "chat.toolCall.workflow.run.settings.limit.ceiling": "esta máquina permite hasta {n}",
-  "chat.toolCall.workflow.run.settings.limit.atCeiling": "= límite de esta máquina",
   "chat.toolCall.workflow.run.settings.limit.decrease": "Menos a la vez",
   "chat.toolCall.workflow.run.settings.limit.increase": "Más a la vez",
   "chat.toolCall.workflow.run.settings.consequence.running":
@@ -5571,8 +5567,6 @@ const esES: Record<string, string> = {
   "chat.toolCall.workflow.settingsChange.modelSession":
     "subagentes de nuevo con el modelo de la sesión",
   "chat.toolCall.workflow.settingsChange.limit": "como máximo {n} a la vez",
-  "chat.toolCall.workflow.settingsChange.limitCeiling":
-    "límite restablecido al predeterminado de esta máquina",
   "chat.toolCall.workflow.run.result.title": "Resultado",
   "chat.toolCall.workflow.run.result.completedHint":
     "Esta ejecución terminó. Su resultado se entregó a la conversación como mensaje de resultado en segundo plano.",

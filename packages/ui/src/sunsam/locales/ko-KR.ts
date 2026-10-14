@@ -4907,8 +4907,6 @@ const koKR: Record<string, string> = {
   "chat.workflowLaunch.settings.model": "서브에이전트 모델",
   "chat.workflowLaunch.settings.limit": "동시 실행 최대",
   "chat.workflowLaunch.settings.sessionModel": "세션 모델",
-  "chat.workflowLaunch.settings.machineLimit": "이 컴퓨터의 한도",
-  "chat.workflowLaunch.settings.machineLimitValue": "{n}(이 컴퓨터의 한도)",
   "chat.toolCall.workflow.save.saving": "워크플로 저장 중",
   "chat.toolCall.workflow.save.saved": "워크플로 저장됨",
   "chat.toolCall.workflow.save.overwrite": "덮어쓰기",
@@ -5220,8 +5218,6 @@ const koKR: Record<string, string> = {
   "chat.toolCall.workflow.run.settings.model.noCatalog":
     "이 에이전트에는 모델 카탈로그가 없어 서브에이전트가 세션 모델을 사용합니다.",
   "chat.toolCall.workflow.run.settings.limit": "서브에이전트 동시 실행 최대",
-  "chat.toolCall.workflow.run.settings.limit.ceiling": "이 컴퓨터는 최대 {n}개까지 허용합니다",
-  "chat.toolCall.workflow.run.settings.limit.atCeiling": "= 이 컴퓨터의 한도",
   "chat.toolCall.workflow.run.settings.limit.decrease": "동시 실행 줄이기",
   "chat.toolCall.workflow.run.settings.limit.increase": "동시 실행 늘리기",
   "chat.toolCall.workflow.run.settings.consequence.running":
@@ -5257,7 +5253,6 @@ const koKR: Record<string, string> = {
   "chat.toolCall.workflow.settingsChange.model": "서브에이전트: {model}",
   "chat.toolCall.workflow.settingsChange.modelSession": "서브에이전트를 세션 모델로 되돌림",
   "chat.toolCall.workflow.settingsChange.limit": "동시 실행 최대 {n}개",
-  "chat.toolCall.workflow.settingsChange.limitCeiling": "한도를 이 컴퓨터의 기본값으로 되돌림",
   "chat.toolCall.workflow.run.result.title": "결과",
   "chat.toolCall.workflow.run.result.completedHint":
     "이 실행이 끝났습니다. 결과는 백그라운드 결과 메시지로 대화에 전달되었습니다.",

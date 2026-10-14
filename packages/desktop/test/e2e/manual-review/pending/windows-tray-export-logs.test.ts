@@ -1,3 +1,4 @@
+import { toBaseLocale } from "@zcode/shared";
 import { readFile } from "node:fs/promises";
 import type { Menu } from "electron";
 import { readSettings, waitForDefaultWorkspaceReady } from "../../helpers/desktop-app.js";
@@ -91,7 +92,7 @@ describe("Windows 托盘导出日志", () => {
       await reveal.mockRestore();
       await browser.execute(async (locale) => {
         await (window as unknown as DesktopBridge).zcode.setApplicationLocale(locale);
-      }, originalSettings.locale ?? "en-US");
+      }, toBaseLocale(originalSettings.locale ?? "en-US"));
     }
   });
 });

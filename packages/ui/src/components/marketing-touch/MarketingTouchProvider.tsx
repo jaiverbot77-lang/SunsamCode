@@ -1,3 +1,4 @@
+import { toBaseLocale } from "@zcode/shared";
 import {
   prepareRequestVerificationClaim,
   useRequestVerificationPrewarm,
@@ -79,7 +80,9 @@ export function MarketingTouchProvider({
   const openRewards = useOpenRewards();
   const openRewardsRef = useRef(openRewards);
   openRewardsRef.current = openRewards;
-  const { intl, locale } = useZCodeIntl();
+  const { intl, locale: uiLocale } = useZCodeIntl();
+  // Sunsam: este contenido remoto sólo existe en zh-CN/en-US; los demás idiomas usan inglés.
+  const locale = toBaseLocale(uiLocale);
   const startEntitlement = useStartPlanEntitlement(
     BUILTIN_MODEL_PROVIDER_IDS.bigmodelStartPlan,
     services.usageStatsService,
@@ -360,7 +363,9 @@ export function MarketingBanner() {
 function ConnectedBanner({ controller }: { controller: MarketingTouchController }) {
   const state = useStore(controller.store);
   const { dark } = useCloudHeroEnvironment();
-  const { intl, locale } = useZCodeIntl();
+  const { intl, locale: uiLocale } = useZCodeIntl();
+  // Sunsam: este contenido remoto sólo existe en zh-CN/en-US; los demás idiomas usan inglés.
+  const locale = toBaseLocale(uiLocale);
   const banner = state.banner;
   useRequestVerificationPrewarm(
     Boolean(

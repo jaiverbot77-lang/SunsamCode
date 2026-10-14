@@ -1,3 +1,4 @@
+import { toBaseLocale } from "@zcode/shared";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
   buildRewardsUrl,
@@ -20,7 +21,9 @@ import { EmbeddedWebsiteHeader } from "@/components/EmbeddedWebsiteHeader.js";
 export function RewardsWebview({ onClose }: { onClose: () => void }) {
   const { credentialService, oauthService } = useServices();
   const platform = usePlatform();
-  const { intl, locale } = useZCodeIntl();
+  const { intl, locale: uiLocale } = useZCodeIntl();
+  // Sunsam: este contenido remoto sólo existe en zh-CN/en-US; los demás idiomas usan inglés.
+  const locale = toBaseLocale(uiLocale);
   const themePreference = useZCodeStore((s) => s.theme);
   const userId = useZCodeStore((s) => s.user?.id ?? null);
   const [systemDark, setSystemDark] = useState(

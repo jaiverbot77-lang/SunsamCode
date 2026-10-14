@@ -1,3 +1,4 @@
+import { toBaseLocale } from "@zcode/shared";
 import { readFile, writeFile, rm } from "node:fs/promises";
 import { join } from "node:path";
 import { readSettings, seedSettings, waitForDefaultWorkspaceReady } from "./helpers/desktop-app.js";
@@ -74,7 +75,7 @@ describe("帮助配置 client/configs", () => {
     await seedSettings(originalSettings);
     await browser.execute(async (locale) => {
       await (window as unknown as { zcode: DesktopBridge }).zcode.setApplicationLocale(locale);
-    }, originalSettings.locale ?? "en-US");
+    }, toBaseLocale(originalSettings.locale ?? "en-US"));
   });
 
   async function expectExternal(url: string) {

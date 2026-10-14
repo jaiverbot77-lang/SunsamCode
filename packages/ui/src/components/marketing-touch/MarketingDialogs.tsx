@@ -1,3 +1,4 @@
+import { toBaseLocale } from "@zcode/shared";
 import { useEffect } from "react";
 import { useStore } from "zustand";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";
@@ -14,7 +15,9 @@ export function MarketingDialogs({ controller }: { controller: MarketingTouchCon
     marketingNavigation,
     (state) => state.request?.target.page === "upgrade",
   );
-  const { locale, intl } = useZCodeIntl();
+  const { locale: uiLocale, intl } = useZCodeIntl();
+  // Sunsam: este contenido remoto sólo existe en zh-CN/en-US; los demás idiomas usan inglés.
+  const locale = toBaseLocale(uiLocale);
   const claimError = state.errorAction === "claim_zcode_plan" ? state.error : null;
   useEffect(() => {
     if (state.error && !claimError) {

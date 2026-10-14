@@ -4994,8 +4994,6 @@ const ptBR: Record<string, string> = {
   "chat.workflowLaunch.settings.model": "Modelo dos subagentes",
   "chat.workflowLaunch.settings.limit": "Simultâneos, no máximo",
   "chat.workflowLaunch.settings.sessionModel": "modelo da sessão",
-  "chat.workflowLaunch.settings.machineLimit": "limite desta máquina",
-  "chat.workflowLaunch.settings.machineLimitValue": "{n} (limite desta máquina)",
   "chat.toolCall.workflow.save.saving": "Salvando workflow",
   "chat.toolCall.workflow.save.saved": "Workflow salvo",
   "chat.toolCall.workflow.save.overwrite": "sobrescrever",
@@ -5308,8 +5306,6 @@ const ptBR: Record<string, string> = {
   "chat.toolCall.workflow.run.settings.model.noCatalog":
     "Este agente não tem catálogo de modelos; os subagentes usam o modelo da sessão.",
   "chat.toolCall.workflow.run.settings.limit": "Subagentes simultâneos, no máximo",
-  "chat.toolCall.workflow.run.settings.limit.ceiling": "esta máquina permite até {n}",
-  "chat.toolCall.workflow.run.settings.limit.atCeiling": "= limite desta máquina",
   "chat.toolCall.workflow.run.settings.limit.decrease": "Menos simultâneos",
   "chat.toolCall.workflow.run.settings.limit.increase": "Mais simultâneos",
   "chat.toolCall.workflow.run.settings.consequence.running":
@@ -5348,7 +5344,6 @@ const ptBR: Record<string, string> = {
   "chat.toolCall.workflow.settingsChange.model": "subagentes com {model}",
   "chat.toolCall.workflow.settingsChange.modelSession": "subagentes de volta ao modelo da sessão",
   "chat.toolCall.workflow.settingsChange.limit": "no máximo {n} simultâneos",
-  "chat.toolCall.workflow.settingsChange.limitCeiling": "limite de volta ao padrão desta máquina",
   "chat.toolCall.workflow.run.result.title": "Resultado",
   "chat.toolCall.workflow.run.result.completedHint":
     "Esta execução terminou. O resultado foi entregue à conversa como mensagem de resultado em segundo plano.",

@@ -5023,8 +5023,6 @@ const ruRU: Record<string, string> = {
   "chat.workflowLaunch.settings.model": "Модель субагентов",
   "chat.workflowLaunch.settings.limit": "Одновременно, не более",
   "chat.workflowLaunch.settings.sessionModel": "модель сессии",
-  "chat.workflowLaunch.settings.machineLimit": "лимит этой машины",
-  "chat.workflowLaunch.settings.machineLimitValue": "{n} (лимит этой машины)",
   "chat.toolCall.workflow.save.saving": "Сохранение workflow",
   "chat.toolCall.workflow.save.saved": "Workflow сохранён",
   "chat.toolCall.workflow.save.overwrite": "перезаписать",
@@ -5338,8 +5336,6 @@ const ruRU: Record<string, string> = {
   "chat.toolCall.workflow.run.settings.model.noCatalog":
     "У этого агента нет каталога моделей; субагенты используют модель сессии.",
   "chat.toolCall.workflow.run.settings.limit": "Субагентов одновременно, не более",
-  "chat.toolCall.workflow.run.settings.limit.ceiling": "эта машина допускает до {n}",
-  "chat.toolCall.workflow.run.settings.limit.atCeiling": "= лимит этой машины",
   "chat.toolCall.workflow.run.settings.limit.decrease": "Меньше одновременно",
   "chat.toolCall.workflow.run.settings.limit.increase": "Больше одновременно",
   "chat.toolCall.workflow.run.settings.consequence.running":
@@ -5377,7 +5373,6 @@ const ruRU: Record<string, string> = {
   "chat.toolCall.workflow.settingsChange.model": "субагенты на {model}",
   "chat.toolCall.workflow.settingsChange.modelSession": "субагенты снова на модели сессии",
   "chat.toolCall.workflow.settingsChange.limit": "не более {n} одновременно",
-  "chat.toolCall.workflow.settingsChange.limitCeiling": "лимит возвращён к значению этой машины",
   "chat.toolCall.workflow.run.result.title": "Результат",
   "chat.toolCall.workflow.run.result.completedHint":
     "Запуск завершён. Результат доставлен в беседу как фоновое сообщение с результатом.",
