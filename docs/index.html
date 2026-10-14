@@ -221,11 +221,95 @@
         display: flex;
         justify-content: center;
       }
-      .hero-art img {
+      .hero-badge {
         width: min(320px, 70vw);
-        height: auto;
+        aspect-ratio: 1;
         border-radius: 22%;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(180deg, #1a1622 0%, #100e15 100%);
+        border: 1px solid rgba(255, 255, 255, 0.08);
         box-shadow: 0 30px 80px -20px color-mix(in srgb, var(--accent-2) 45%, transparent);
+        animation: sunsam-logo-badge-in 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+      }
+      .hero-badge svg {
+        width: 66%;
+        height: auto;
+        overflow: visible;
+      }
+      .hero-badge .ray,
+      .hero-badge .tri {
+        transform-box: view-box;
+      }
+      .hero-badge .ray {
+        transform-origin: 512px 512px;
+        animation:
+          sunsam-logo-ray-in 0.5s cubic-bezier(0.2, 0.8, 0.3, 1.25) both,
+          sunsam-logo-ray-pulse 2.4s ease-in-out infinite;
+        animation-delay: var(--d), calc(var(--d) + 1.5s);
+      }
+      .hero-badge .tri {
+        transform-origin: 517px 488px;
+        animation:
+          sunsam-logo-tri-in 0.65s cubic-bezier(0.2, 0.8, 0.3, 1.2) 0.55s both,
+          sunsam-logo-tri-glow 2.4s ease-in-out 1.8s infinite;
+      }
+      @keyframes sunsam-logo-badge-in {
+        from {
+          opacity: 0;
+          transform: scale(0.7);
+        }
+      }
+      @keyframes sunsam-logo-ray-in {
+        from {
+          opacity: 0;
+          transform: scale(0.55);
+        }
+        60% {
+          opacity: 1;
+          transform: scale(1.08);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      @keyframes sunsam-logo-ray-pulse {
+        50% {
+          transform: scale(1.06);
+        }
+      }
+      @keyframes sunsam-logo-tri-in {
+        from {
+          opacity: 0;
+          transform: rotate(-120deg) scale(0);
+        }
+        60% {
+          opacity: 1;
+          transform: rotate(-12deg) scale(1.12);
+          filter: drop-shadow(0 0 40px rgba(253, 182, 115, 0.85));
+        }
+        to {
+          opacity: 1;
+          transform: none;
+          filter: drop-shadow(0 0 14px rgba(244, 65, 94, 0.35));
+        }
+      }
+      @keyframes sunsam-logo-tri-glow {
+        0%,
+        100% {
+          filter: drop-shadow(0 0 14px rgba(244, 65, 94, 0.35));
+        }
+        50% {
+          filter: drop-shadow(0 0 30px rgba(253, 182, 115, 0.6));
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .hero-badge,
+        .hero-badge .ray,
+        .hero-badge .tri {
+          animation: none;
+        }
       }
       /* Secciones */
       section {
@@ -493,7 +577,7 @@
           order: -1;
           justify-content: flex-start;
         }
-        .hero-art img {
+        .hero-badge {
           width: 120px;
         }
         .grid.cols-3,
@@ -522,6 +606,7 @@
           <a href="#mesh" data-i18n="nav.mesh">Sunsam Mesh</a>
           <a href="#paper" data-i18n="nav.paper">Paper</a>
           <a href="#empezar" data-i18n="nav.start">Empezar</a>
+          <a href="documentation.html" data-i18n="footer.docs">Documentación</a>
         </nav>
         <div class="spacer"></div>
         <div class="lang">
@@ -592,7 +677,25 @@
           </div>
         </div>
         <div class="hero-art">
-          <img src="assets/sunsam-icon.png" alt="Sunsam Code" width="320" height="320" />
+          <!-- Logo animado: mismo movimiento que el arranque de la app (EffectCraft → SVG + CSS). -->
+          <div class="hero-badge" role="img" aria-label="Sunsam Code">
+            <svg viewBox="130 180 760 660" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="hero-tri" x1="383" y1="394" x2="600" y2="640" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#FDB673" />
+                  <stop offset="0.55" stop-color="#F4415E" />
+                  <stop offset="1" stop-color="#DC447F" />
+                </linearGradient>
+              </defs>
+              <g stroke="#F4F1F7" stroke-width="26" stroke-linecap="round">
+                <path class="ray" style="--d: 0.3s" d="M475 208L489 285" />
+                <path class="ray" style="--d: 0.38s" d="M793 468L870 445" />
+                <path class="ray" style="--d: 0.46s" d="M477 741L487 815" />
+                <path class="ray" style="--d: 0.54s" d="M156 510L228 487" />
+              </g>
+              <path class="tri" d="M383 394L733 442L436 629Z" fill="url(#hero-tri)" />
+            </svg>
+          </div>
         </div>
       </div>
 
@@ -1050,7 +1153,7 @@ pnpm sunsam:mesh</pre
           >
           ·
           <a
-            href="https://github.com/jhonsu01/SunsamCode/blob/main/docs/sunsam/README.md"
+            href="documentation.html"
             data-i18n="footer.docs"
             >Documentación</a
           >

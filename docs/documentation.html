@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sunsam Code · Documentación</title>
+    <meta
+      name="description"
+      content="Documentación de Sunsam Code: instalación, proveedores de modelos, extensiones MCP, Sunsam Mesh, actualizaciones y solución de problemas."
+    />
+    <meta name="theme-color" content="#15121c" />
+    <meta name="color-scheme" content="dark" />
+    <meta property="og:title" content="Sunsam Code · Documentation" />
+    <meta property="og:image" content="https://jhonsu01.github.io/SunsamCode/docs/assets/og.png" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #15121c;
+        --bg-raised: #1d1926;
+        --bg-card: #221d2d;
+        --border: #342d42;
+        --text: #f4f1f7;
+        --text-muted: #b3abc0;
+        --text-subtle: #857c94;
+        --accent-1: #fdb673;
+        --accent-2: #f4415e;
+        --accent-3: #dc447f;
+        --gradient: linear-gradient(135deg, var(--accent-1) 0%, var(--accent-2) 55%, var(--accent-3) 100%);
+        --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 76px;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font: 16px/1.65 Inter, system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: var(--accent-1);
+      }
+      code,
+      pre {
+        font-family: var(--mono);
+        font-size: 0.88em;
+      }
+      code {
+        background: var(--bg-raised);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 1px 6px;
+        overflow-wrap: anywhere;
+      }
+      pre {
+        background: var(--bg-raised);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 12px 14px;
+        overflow-x: auto;
+      }
+      .wrap {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 16px;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: color-mix(in srgb, var(--bg) 86%, transparent);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
+      }
+      .bar {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        height: 60px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 700;
+        text-decoration: none;
+        color: var(--text);
+      }
+      .brand img {
+        width: 28px;
+        height: 28px;
+        border-radius: 7px;
+      }
+      nav.links {
+        display: flex;
+        gap: 18px;
+        margin-left: 12px;
+      }
+      nav.links a {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 14px;
+      }
+      nav.links a:hover,
+      nav.links a[aria-current="page"] {
+        color: var(--text);
+      }
+      .spacer {
+        flex: 1;
+      }
+      .lang select {
+        appearance: none;
+        background: var(--bg-raised)
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23b3abc0' fill='none' stroke-width='1.5'/%3E%3C/svg%3E")
+          no-repeat right 10px center;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        color: var(--text);
+        font: inherit;
+        font-size: 13px;
+        padding: 5px 28px 5px 12px;
+        cursor: pointer;
+      }
+      .gh {
+        color: var(--text-muted);
+        display: flex;
+      }
+      .hero {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        padding: 48px 0 28px;
+      }
+      .hero h1 {
+        margin: 0 0 6px;
+        font-size: clamp(30px, 5vw, 44px);
+        line-height: 1.1;
+      }
+      .hero p {
+        margin: 0;
+        color: var(--text-muted);
+        max-width: 640px;
+      }
+      .grad {
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .badge {
+        flex: none;
+        width: 112px;
+        height: 112px;
+        border-radius: 28px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(180deg, #1a1622 0%, #100e15 100%);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 20px 40px -18px rgba(244, 65, 94, 0.35);
+        animation: sunsam-logo-badge-in 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+      }
+      .badge svg {
+        width: 74px;
+        height: auto;
+        overflow: visible;
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: 230px minmax(0, 1fr);
+        gap: 40px;
+        padding-bottom: 64px;
+      }
+      .toc {
+        position: sticky;
+        top: 84px;
+        align-self: start;
+        font-size: 14px;
+      }
+      .toc h2 {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--text-subtle);
+        margin: 0 0 10px;
+      }
+      .toc ol {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        border-left: 1px solid var(--border);
+      }
+      .toc a {
+        display: block;
+        padding: 5px 12px;
+        margin-left: -1px;
+        border-left: 2px solid transparent;
+        color: var(--text-muted);
+        text-decoration: none;
+      }
+      .toc a:hover {
+        color: var(--text);
+      }
+      .toc a.active {
+        color: var(--text);
+        border-left-color: var(--accent-2);
+      }
+      article section {
+        padding: 8px 0 24px;
+        border-bottom: 1px solid var(--border);
+      }
+      article section:last-child {
+        border-bottom: 0;
+      }
+      article h2 {
+        font-size: 24px;
+        margin: 20px 0 10px;
+      }
+      article h4 {
+        margin: 18px 0 6px;
+        font-size: 16px;
+      }
+      article p,
+      article li,
+      article dd {
+        color: var(--text-muted);
+      }
+      article b,
+      article dt {
+        color: var(--text);
+      }
+      article dt {
+        font-weight: 600;
+        margin-top: 12px;
+      }
+      article dd {
+        margin: 2px 0 0;
+      }
+      article li {
+        margin: 4px 0;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+        margin: 12px 0;
+        display: block;
+        overflow-x: auto;
+      }
+      th,
+      td {
+        text-align: left;
+        border: 1px solid var(--border);
+        padding: 8px 10px;
+        vertical-align: top;
+        color: var(--text-muted);
+      }
+      th {
+        background: var(--bg-raised);
+        color: var(--text);
+      }
+      footer {
+        border-top: 1px solid var(--border);
+        padding: 28px 0 44px;
+        color: var(--text-subtle);
+        font-size: 14px;
+      }
+      footer a {
+        color: var(--text-muted);
+      }
+      /* Logo animado: el mismo movimiento que en la app (packages/ui/src/sunsam/sunsamAnimatedLogo.css). */
+      .ray,
+      .tri {
+        transform-box: view-box;
+      }
+      .ray {
+        transform-origin: 512px 512px;
+        animation:
+          sunsam-logo-ray-in 0.5s cubic-bezier(0.2, 0.8, 0.3, 1.25) both,
+          sunsam-logo-ray-pulse 2.4s ease-in-out infinite;
+        animation-delay: var(--d), calc(var(--d) + 1.5s);
+      }
+      .tri {
+        transform-origin: 517px 488px;
+        animation:
+          sunsam-logo-tri-in 0.65s cubic-bezier(0.2, 0.8, 0.3, 1.2) 0.55s both,
+          sunsam-logo-tri-glow 2.4s ease-in-out 1.8s infinite;
+      }
+      @keyframes sunsam-logo-badge-in {
+        from {
+          opacity: 0;
+          transform: scale(0.7);
+        }
+      }
+      @keyframes sunsam-logo-ray-in {
+        from {
+          opacity: 0;
+          transform: scale(0.55);
+        }
+        60% {
+          opacity: 1;
+          transform: scale(1.08);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      @keyframes sunsam-logo-ray-pulse {
+        50% {
+          transform: scale(1.06);
+        }
+      }
+      @keyframes sunsam-logo-tri-in {
+        from {
+          opacity: 0;
+          transform: rotate(-120deg) scale(0);
+        }
+        60% {
+          opacity: 1;
+          transform: rotate(-12deg) scale(1.12);
+          filter: drop-shadow(0 0 40px rgba(253, 182, 115, 0.85));
+        }
+        to {
+          opacity: 1;
+          transform: none;
+          filter: drop-shadow(0 0 14px rgba(244, 65, 94, 0.35));
+        }
+      }
+      @keyframes sunsam-logo-tri-glow {
+        0%,
+        100% {
+          filter: drop-shadow(0 0 14px rgba(244, 65, 94, 0.35));
+        }
+        50% {
+          filter: drop-shadow(0 0 30px rgba(253, 182, 115, 0.6));
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .badge,
+        .ray,
+        .tri {
+          animation: none;
+        }
+      }
+      @media (max-width: 820px) {
+        nav.links {
+          display: none;
+        }
+        .layout {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
+        .toc {
+          position: static;
+        }
+        .hero {
+          padding-top: 32px;
+        }
+        .badge {
+          width: 84px;
+          height: 84px;
+          border-radius: 22px;
+        }
+        .badge svg {
+          width: 56px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap bar">
+        <a class="brand" href="./"><img src="assets/sunsam-icon.png" alt="" />Sunsam Code</a>
+        <nav class="links">
+          <a href="./" data-i18n="nav.home">Inicio</a>
+          <a href="./#descargas" data-i18n="nav.downloads">Descargas</a>
+          <a href="./#extensiones" data-i18n="nav.ext">Extensiones</a>
+          <a href="documentation.html" aria-current="page" data-i18n="nav.docs">Documentación</a>
+        </nav>
+        <div class="spacer"></div>
+        <div class="lang">
+          <select id="lang-select" aria-label="Idioma / Language">
+            <option value="es">Español</option>
+            <option value="en">English</option>
+            <option value="pt">Português</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="it">Italiano</option>
+            <option value="zh">中文</option>
+            <option value="ja">日本語</option>
+            <option value="ko">한국어</option>
+          </select>
+        </div>
+        <a class="gh" href="https://github.com/jhonsu01/SunsamCode" aria-label="GitHub">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path
+              d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.7.1-.7 1.2.1 1.9 1.2 1.9 1.2 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.6 18.3 5 18.3 5c.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"
+            />
+          </svg>
+        </a>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <div class="hero">
+        <div class="badge" aria-hidden="true">
+          <svg viewBox="130 180 760 660" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="tri-g" x1="383" y1="394" x2="600" y2="640" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#FDB673" />
+                <stop offset="0.55" stop-color="#F4415E" />
+                <stop offset="1" stop-color="#DC447F" />
+              </linearGradient>
+            </defs>
+            <g stroke="#F4F1F7" stroke-width="26" stroke-linecap="round">
+              <path class="ray" style="--d: 0.3s" d="M475 208L489 285" />
+              <path class="ray" style="--d: 0.38s" d="M793 468L870 445" />
+              <path class="ray" style="--d: 0.46s" d="M477 741L487 815" />
+              <path class="ray" style="--d: 0.54s" d="M156 510L228 487" />
+            </g>
+            <path class="tri" d="M383 394L733 442L436 629Z" fill="url(#tri-g)" />
+          </svg>
+        </div>
+        <div>
+          <h1 class="grad" id="doc-title">Documentación</h1>
+          <p id="doc-lead"></p>
+        </div>
+      </div>
+
+      <div class="layout">
+        <aside class="toc">
+          <h2 id="doc-toc">En esta página</h2>
+          <ol id="toc-list"></ol>
+        </aside>
+        <article id="doc-body"></article>
+      </div>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <a href="./" id="doc-back">← Volver al inicio</a> ·
+        <a href="https://github.com/jhonsu01/SunsamCode">GitHub</a> ·
+        <a href="https://github.com/jhonsu01/SunsamCode/issues/new/choose">Issues</a> · Apache-2.0
+      </div>
+    </footer>
+
+    <script src="assets/docs-content.js"></script>
+    <script src="assets/docs-content-i18n.js"></script>
+    <script>
+      (() => {
+        const DOCS = window.SUNSAM_DOCS;
+        const NAV = {
+          es: { "nav.home": "Inicio", "nav.downloads": "Descargas", "nav.ext": "Extensiones", "nav.docs": "Documentación" },
+          en: { "nav.home": "Home", "nav.downloads": "Downloads", "nav.ext": "Extensions", "nav.docs": "Documentation" },
+          pt: { "nav.home": "Início", "nav.downloads": "Downloads", "nav.ext": "Extensões", "nav.docs": "Documentação" },
+          fr: { "nav.home": "Accueil", "nav.downloads": "Téléchargements", "nav.ext": "Extensions", "nav.docs": "Documentation" },
+          de: { "nav.home": "Start", "nav.downloads": "Downloads", "nav.ext": "Erweiterungen", "nav.docs": "Dokumentation" },
+          it: { "nav.home": "Home", "nav.downloads": "Download", "nav.ext": "Estensioni", "nav.docs": "Documentazione" },
+          zh: { "nav.home": "首页", "nav.downloads": "下载", "nav.ext": "扩展", "nav.docs": "文档" },
+          ja: { "nav.home": "ホーム", "nav.downloads": "ダウンロード", "nav.ext": "拡張機能", "nav.docs": "ドキュメント" },
+          ko: { "nav.home": "홈", "nav.downloads": "다운로드", "nav.ext": "확장", "nav.docs": "문서" },
+        };
+        const HTML_LANG = { zh: "zh-CN" };
+        const readStored = () => {
+          try {
+            return localStorage.getItem("sunsam-lang");
+          } catch {
+            return null;
+          }
+        };
+        const store = (value) => {
+          try {
+            localStorage.setItem("sunsam-lang", value);
+          } catch {
+            /* almacenamiento no disponible */
+          }
+        };
+
+        function render(lang) {
+          const doc = DOCS[lang] ?? DOCS.en;
+          const fallback = new Map(DOCS.en.sections.map((s) => [s.id, s]));
+          const sections = DOCS.en.sections.map((s) => doc.sections.find((x) => x.id === s.id) ?? fallback.get(s.id));
+          document.documentElement.lang = HTML_LANG[lang] ?? lang;
+          document.title = `Sunsam Code · ${doc.title}`;
+          document.getElementById("doc-title").textContent = doc.title;
+          document.getElementById("doc-lead").textContent = doc.lead;
+          document.getElementById("doc-toc").textContent = doc.toc;
+          document.getElementById("doc-back").textContent = doc.back;
+          document.querySelectorAll("[data-i18n]").forEach((el) => {
+            el.textContent = (NAV[lang] ?? NAV.en)[el.dataset.i18n] ?? el.textContent;
+          });
+          const toc = document.getElementById("toc-list");
+          const body = document.getElementById("doc-body");
+          toc.replaceChildren();
+          body.replaceChildren();
+          for (const section of sections) {
+            const li = document.createElement("li");
+            const a = document.createElement("a");
+            a.href = `#${section.id}`;
+            a.textContent = section.title;
+            li.append(a);
+            toc.append(li);
+            const el = document.createElement("section");
+            el.id = section.id;
+            const h2 = document.createElement("h2");
+            h2.textContent = section.title;
+            el.append(h2);
+            // Contenido estático de docs-content*.js (este repositorio), no texto de usuarios.
+            el.insertAdjacentHTML("beforeend", section.html);
+            body.append(el);
+          }
+          document.getElementById("lang-select").value = DOCS[lang] ? lang : "en";
+          observe();
+          if (location.hash) {
+            const target = document.getElementById(location.hash.slice(1));
+            requestAnimationFrame(() => target?.scrollIntoView({ behavior: "instant", block: "start" }));
+          }
+        }
+
+        let observer;
+        function observe() {
+          observer?.disconnect();
+          const links = new Map([...document.querySelectorAll("#toc-list a")].map((a) => [a.hash.slice(1), a]));
+          observer = new IntersectionObserver(
+            (entries) => {
+              for (const entry of entries) {
+                if (!entry.isIntersecting) continue;
+                links.forEach((a) => a.classList.remove("active"));
+                links.get(entry.target.id)?.classList.add("active");
+              }
+            },
+            { rootMargin: "-80px 0px -70% 0px" },
+          );
+          document.querySelectorAll("#doc-body section").forEach((s) => observer.observe(s));
+        }
+
+        document.getElementById("lang-select").addEventListener("change", (event) => {
+          store(event.target.value);
+          render(event.target.value);
+        });
+        const fromUrl = new URLSearchParams(location.search).get("lang");
+        const browserLang = (navigator.language || "es").slice(0, 2).toLowerCase();
+        const initial = fromUrl || readStored() || (DOCS[browserLang] ? browserLang : "en");
+        render(DOCS[initial] ? initial : "en");
+      })();
+    </script>
+  </body>
+</html>

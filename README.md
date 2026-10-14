@@ -1,110 +1,120 @@
 # Sunsam Code
 
-<p align="center"><img src="public/logo/icons/512x512.png" alt="Sunsam Code" width="128" height="128" /></p>
+<p align="center"><img src="branding/sunsam/animated/sunsam-logo-animated-256.gif" alt="Sunsam Code" width="160" height="160" /></p>
 
-**Agente de programación de escritorio con tus propios modelos y un router P2P entre máquinas.**
+<p align="center"><b>A desktop coding agent that runs on your own models, with a P2P router across your machines.</b></p>
 
-**Español** · [English](README.en.md) · [简体中文](README.zh-CN.md)
+<p align="center">
+  <b>English</b> · <a href="README.es.md">Español</a> · <a href="README.pt-BR.md">Português</a> · <a href="README.fr.md">Français</a> · <a href="README.de.md">Deutsch</a> · <a href="README.ru.md">Русский</a> · <a href="README.zh-CN.md">简体中文</a> · <a href="README.ja.md">日本語</a> · <a href="README.ko.md">한국어</a>
+</p>
 
-[![Release](https://img.shields.io/github/v/release/jhonsu01/SunsamCode?label=descargar&color=f4415e)](https://github.com/jhonsu01/SunsamCode/releases/latest)
-[![Build](https://img.shields.io/github/actions/workflow/status/jhonsu01/SunsamCode/sunsam-desktop-build.yml?label=build)](https://github.com/jhonsu01/SunsamCode/actions/workflows/sunsam-desktop-build.yml)
-[![Página](https://img.shields.io/badge/web-jhonsu01.github.io%2FSunsamCode-15121c)](https://jhonsu01.github.io/SunsamCode/)
-[![Licencia](https://img.shields.io/badge/licencia-Apache--2.0-blue)](LICENSE)
+<p align="center">
+  <a href="https://github.com/jhonsu01/SunsamCode/releases/latest"><img src="https://img.shields.io/github/v/release/jhonsu01/SunsamCode?label=download&color=f4415e" alt="Release" /></a>
+  <a href="https://jhonsu01.github.io/SunsamCode/"><img src="https://img.shields.io/badge/web-jhonsu01.github.io%2FSunsamCode-15121c" alt="Website" /></a>
+  <a href="https://jhonsu01.github.io/SunsamCode/documentation.html"><img src="https://img.shields.io/badge/docs-9%20languages-fdb673" alt="Documentation" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-blue" alt="License" /></a>
+</p>
 
-Sunsam Code es un fork de [ZCode](https://github.com/zai-org/ZCode) (Z.ai) con marca propia,
-**Custom providers** (con el proveedor oficial Z.ai opcional) y **Sunsam Mesh**, un router que reparte
-cada petición entre un modelo pequeño local y modelos grandes en otras máquinas de tu red.
+Sunsam Code is an open-source fork of [ZCode](https://github.com/zai-org/ZCode) (Z.ai) with its own branding,
+**custom model providers** (the official Z.ai provider stays optional), **one-click MCP extensions** and
+**Sunsam Mesh**, a router that sends each request to a small local model or to larger models on other machines
+in your network.
 
-🌐 **Página del proyecto:** <https://jhonsu01.github.io/SunsamCode/>
+🌐 **Website:** <https://jhonsu01.github.io/SunsamCode/> · 📖 **Documentation:** <https://jhonsu01.github.io/SunsamCode/documentation.html>
 
-## Descargas
+## Downloads
 
-Los instaladores están en **[Releases](https://github.com/jhonsu01/SunsamCode/releases/latest)**.
+Installers are published under **[Releases](https://github.com/jhonsu01/SunsamCode/releases/latest)**.
 
-| Sistema | Arquitectura                        | Archivo                                     |
+| OS      | Architecture                        | File                                        |
 | ------- | ----------------------------------- | ------------------------------------------- |
-| Windows | x64                                 | `Sunsam-Code-<versión>-win-x64.exe`         |
-| macOS   | Apple Silicon (arm64) / Intel (x64) | `.dmg` o `.zip`                             |
+| Windows | x64                                 | `Sunsam-Code-<version>-win-x64.exe`         |
+| macOS   | Apple Silicon (arm64) / Intel (x64) | `.dmg` or `.zip`                            |
 | Linux   | x64 / arm64                         | `.AppImage`, `.deb`, `.rpm`, `.pkg.tar.zst` |
 
-> El instalador de **Windows está firmado** (Authenticode SHA-256 con sello de tiempo) con un certificado
-> propio, no de una CA pública; macOS y Linux no están firmados.
-> **macOS:** tras copiar la app a Aplicaciones ejecuta
+> The **Windows installer is signed** (Authenticode SHA-256 with a timestamp) with the author's own
+> certificate, not a public CA; macOS and Linux builds are not signed.
+> **Windows:** SmartScreen → _More info_ → _Run anyway_.
+> **macOS:** after copying the app to Applications run
 > `xattr -rd com.apple.quarantine "/Applications/Sunsam Code.app"`.
-> **Windows:** SmartScreen → _Más información_ → _Ejecutar de todas formas_.
 > **Linux (AppImage):** `chmod +x Sunsam*.AppImage && ./Sunsam*.AppImage`.
 
-La app **se actualiza sola** desde estos Releases: en Windows y con la AppImage de Linux aparece el botón de
-actualizar (al abrir, cada hora o en _Ayuda → Buscar actualizaciones_); en macOS descarga el `.dmg` nuevo.
-Windows se compila y firma en local; macOS y Linux salen del [workflow](.github/workflows/sunsam-desktop-build.yml) lanzado a mano.
+The app **updates itself** from these Releases: on Windows and with the Linux AppImage the update button
+appears (on launch, every hour or via _Help → Check for updates_); on macOS download the new `.dmg`.
 
-## Qué cambia respecto a ZCode
+## What's new in 3.15.1-sunsam.11
 
-|                             | ZCode                                                  | Sunsam Code                                                                                 |
-| --------------------------- | ------------------------------------------------------ | ------------------------------------------------------------------------------------------- |
-| Marca                       | ZCode                                                  | Logo y nombre Sunsam en app, instaladores, menús y bandeja                                  |
-| Model settings              | Providers integrados (Z.ai, Start Plan) + Custom       | **Custom providers** (LM Studio, Ollama, vLLM, Sunsam Mesh…) + Z.ai opcional                |
-| Enrutado de modelos         | Manual                                                 | **Sunsam Mesh**: `sunsam-auto` decide entre modelo local y modelo grande en red             |
-| Instalación                 | `dev.zcode.app`                                        | `dev.sunsam.code`: se instala junto a ZCode sin sobrescribirlo                              |
-| Actualizaciones de upstream | —                                                      | Sincronización diaria con `zai-org/ZCode` conservando la capa Sunsam                        |
-| Extensiones MCP             | Servidores añadidos a mano (comando, argumentos, JSON) | **Instalar `.mcpb` / `.dxt`** con un botón o arrastrando el archivo, como en Claude Desktop |
-| Actualizaciones de la app   | Servidor de Z.ai (ZCode oficial)                       | **GitHub Releases** de este repositorio                                                     |
-| Esquemas de herramientas    | Se envían tal cual                                     | Se adaptan a lo que acepta la API de Z.ai/GLM (evita el error `[1210]`)                     |
+- **Based on ZCode 3.15.1**: UI Plugins (plugins with their own interface, such as an Excalidraw flow), web
+  remote control from your phone, dynamic workflows and many fixes, merged without losing any Sunsam feature.
+- **Animated Sunsam logo** at startup and in the introduction (made with the EffectCraft connector, rendered
+  as SVG + CSS); the Z watermark on the home screen and the About dialog now show the Sunsam brand.
+- **Product documentation** in 9 languages, opened from _Help → Product docs_.
+- **Report an issue** and **Request a feature** open GitHub issue forms with the version and system filled in.
 
-## Extensiones MCP (`.mcpb` / `.dxt`)
+## What changes compared to ZCode
 
-Sunsam Code instala extensiones empaquetadas en formato [MCP Bundle](https://github.com/modelcontextprotocol/mcpb),
-el mismo de las _Extensiones_ de Claude Desktop (`.mcpb`, y el antiguo `.dxt`).
+|                  | ZCode                                          | Sunsam Code                                                                             |
+| ---------------- | ---------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Branding         | ZCode                                          | Animated Sunsam logo and name in the app, installers, menus and tray                    |
+| Model settings   | Built-in providers (Z.ai, Start Plan) + Custom | **Custom providers** (LM Studio, Ollama, vLLM, Sunsam Mesh…) + optional Z.ai            |
+| Model routing    | Manual                                         | **Sunsam Mesh**: `sunsam-auto` picks between a local model and a large one              |
+| Install identity | `dev.zcode.app`                                | `dev.sunsam.code`: installs side by side with ZCode                                     |
+| MCP extensions   | Servers added by hand (command, args, JSON)    | **Install `.mcpb` / `.dxt`** with a button, by dragging the file or from marketplaces   |
+| App updates      | Z.ai server (official ZCode)                   | **GitHub Releases** of this repository                                                  |
+| Help menu        | Z.ai docs and feedback forms                   | **Own documentation** and **GitHub issues**                                             |
+| Languages        | 中文, English                                  | + Español, Português, Français, Русский, 한국어                                          |
+| Tool schemas     | Sent as-is                                     | Adapted to what the Z.ai/GLM API accepts (avoids error `[1210]`)                        |
 
-1. Abre **Ajustes → Servidores MCP**.
-2. Pulsa **Instalar extensión (.mcpb / .dxt)** o **arrastra** uno o varios archivos sobre la pantalla.
-3. Si la extensión necesita ajustes (`user_config`), aparece un formulario:
-   - Las rutas de carpetas y programas **se detectan solas** (rutas que indica la extensión, `PATH`,
-     Program Files) y se marcan como _Detectado automáticamente_.
-   - **Examinar…** abre el selector del sistema para elegir otra ruta a mano.
-4. Pulsa **Reiniciar ahora** para que el agente cargue la extensión.
+## MCP extensions (`.mcpb` / `.dxt`) and marketplaces
 
-| Acción                             | Qué ocurre                                                   |
-| ---------------------------------- | ------------------------------------------------------------ |
-| Volver a subir el mismo paquete    | Se **actualiza** y conserva tu configuración                 |
-| Borrar el servidor en la lista     | Se desinstala y se borran sus archivos                       |
-| Sin Node.js instalado en el equipo | Usa el Node incluido en Sunsam Code                          |
-| La extensión usa esquemas «tupla»  | Se adaptan solos para que Z.ai/GLM no rechace el chat (1210) |
+Sunsam Code installs packaged extensions in the [MCP Bundle](https://github.com/modelcontextprotocol/mcpb) format,
+the same one used by Claude Desktop _Extensions_.
 
-Las extensiones se guardan en `%APPDATA%\Sunsam Code\extensions\` (macOS:
-`~/Library/Application Support/Sunsam Code/extensions/`, Linux: `~/.config/Sunsam Code/extensions/`).
+1. Open **Settings → MCP Servers**.
+2. Click **Install extension (.mcpb / .dxt)** or **drag** one or more files onto the screen.
+3. Folder and program paths the extension needs are **detected automatically**; **Browse…** picks another one.
+4. Click **Restart now** so the agent loads the extension.
 
-Probadas con: [Audacity Bridge](https://github.com/jhonsu01/audacity-mcp-server/releases/latest), [Vector Magic Bridge](https://github.com/jhonsu01/VectorMagic-mcp-server/releases/latest),
-[FilmCraft Bridge](https://github.com/jhonsu01/filmcraft-mcp-server/releases/latest) y Design Bridge (Adobe Illustrator).
+Uploading the same package again **updates** it and keeps your settings; without Node.js on the computer, the
+Node bundled with Sunsam Code is used. Under **Settings → MCP Servers → Marketplaces** the
+[Sunsam marketplace](https://github.com/jhonsu01/marketplace-SunsamCode) installs ready-made connectors (FilmCraft,
+PhotoCraft, WordCraft, PdfCraft, DesignCraft, Audacity…) with one click and shows **Update** when a new version is out.
 
-## Sunsam Mesh: router P2P entre máquinas
+## Sunsam Mesh: P2P router across machines
 
 ```text
 Sunsam Code ──▶ Sunsam Mesh (127.0.0.1:4141)
-                   │  router: Laya (probabilidades calibradas) o heurística
-                   ├── p_local ≥ 0.75 ─▶ tier local : SLM destilado (LM Studio / Ollama)
-                   ├── p_local < 0.75 ─▶ tier swarm : modelo grande (vLLM, Petals, otros nodos)
-                   └── en segundo plano: pares RLCD · destilación byte-level · etiquetas para Laya
+                   │  router: Laya (calibrated probabilities) or heuristic
+                   ├── p_local ≥ 0.75 ─▶ local tier : distilled SLM (LM Studio / Ollama)
+                   ├── p_local < 0.75 ─▶ swarm tier : large model (vLLM, Petals, other nodes)
+                   └── in the background: RLCD pairs · byte-level distillation · Laya labels
 ```
 
 ```bash
-pnpm sunsam:mesh:init   # crea ~/.sunsam/mesh.json (edita tus peers de la LAN)
-pnpm sunsam:mesh        # arranca el gateway en http://127.0.0.1:4141
+pnpm sunsam:mesh:init   # creates ~/.sunsam/mesh.json (edit your LAN peers)
+pnpm sunsam:mesh        # starts the gateway at http://127.0.0.1:4141
 ```
 
-En la app: **Model settings → Add provider → Base URL `http://127.0.0.1:4141`** y elige el modelo
-`sunsam-auto`, `sunsam-local` o `sunsam-swarm`. Detalles: [packages/sunsam-mesh](packages/sunsam-mesh/README.md).
+In the app: **Model settings → Add provider → Base URL `http://127.0.0.1:4141`**, then pick
+`sunsam-auto`, `sunsam-local` or `sunsam-swarm`. Details: [packages/sunsam-mesh](packages/sunsam-mesh/README.md).
 
-Incluye dos técnicas del paper _Breaking the Token Ceiling_ (arXiv 2609.12303):
+## Report problems and propose ideas
 
-- **Conversión token→byte End-Of-Token**: destilación byte-level y etiquetas independientes del
-  tokenizador para entrenar el router.
-- **Bits-per-byte y bytes/s**: comparan modelos con tokenizadores distintos para elegir a qué máquina
-  enviar cada petición.
+Use **Help → Report an issue** or **Help → Request a feature** in the app, or open an
+[issue](https://github.com/jhonsu01/SunsamCode/issues/new/choose) directly. Contributions are welcome: open a pull
+request against `claude/nice-brown-v1jufb`.
 
-## Compilar desde el código
+## Branches
 
-Requisitos: Node.js 24.14.0 y pnpm 10.33.2 ([mise.toml](mise.toml)).
+| Branch                     | Purpose                                                                 |
+| -------------------------- | ----------------------------------------------------------------------- |
+| `claude/nice-brown-v1jufb` | Development of Sunsam Code (releases and website are built from here)    |
+| `main`                     | Kept in sync with the development branch                                |
+| `zcode-upstream`           | Mirror of [zai-org/ZCode](https://github.com/zai-org/ZCode) to merge new upstream versions |
+
+## Building from source
+
+Requirements: Node.js 24.14.0 and pnpm 10.33.2 ([mise.toml](mise.toml)).
 
 ```bash
 pnpm install
@@ -115,17 +125,18 @@ ZCODE_NODE_DIST_MIRROR=https://nodejs.org/dist \
 pnpm bundle:desktop -- --os linux --arch x64   # --os win | mac · --arch x64 | arm64
 ```
 
-Los instaladores quedan en `packages/desktop/dist/`. Desarrollo: `pnpm dev:desktop` (escritorio) o
-`pnpm dev:web` (web).
+Installers are written to `packages/desktop/dist/`. Development: `pnpm dev:desktop` (desktop) or
+`pnpm dev:web` (web). Sunsam tests: `pnpm sunsam:test`.
 
-## Documentación
+## Documentation
 
-- [Capa de personalización, compilación y sincronización con upstream](docs/sunsam/README.md)
-- [Mejoras y hoja de ruta (Laya, RLCD, P2P)](docs/sunsam/mejoras.md)
-- [Sunsam Mesh](packages/sunsam-mesh/README.md) · [Especificación](packages/sunsam-mesh/SPEC.md)
-- Documentación original de ZCode (funciones del agente, CLI, web): [README de upstream](https://github.com/zai-org/ZCode#readme)
+- [Product documentation](https://jhonsu01.github.io/SunsamCode/documentation.html) (9 languages)
+- [Customization layer, builds and upstream sync (ES)](docs/sunsam/README.md)
+- [Improvements and roadmap: Laya, RLCD, P2P (ES)](docs/sunsam/mejoras.md)
+- [Sunsam Mesh](packages/sunsam-mesh/README.md) · [Specification](packages/sunsam-mesh/SPEC.md)
+- Original ZCode documentation: [upstream README](https://github.com/zai-org/ZCode/blob/main/README.en.md)
 
-## Licencia
+## License
 
-Apache-2.0. Sunsam Code deriva de [ZCode](https://github.com/zai-org/ZCode) de Z.ai; ver
-[LICENSE](LICENSE), [NOTICE.md](NOTICE.md) y [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
+Apache-2.0. Sunsam Code is derived from [ZCode](https://github.com/zai-org/ZCode) by Z.ai; see
+[LICENSE](LICENSE), [NOTICE.md](NOTICE.md) and [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
