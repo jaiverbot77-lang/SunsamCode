@@ -6,7 +6,9 @@ import {
 /* eslint-disable max-lines -- preload bridge 集中暴露桌面平台 IPC，拆散会让 contextBridge 权限边界更难审计。 */
 import { contextBridge, ipcRenderer, webFrame, webUtils } from "electron";
 import {
+  SUNSAM_MARKETPLACE_CHANNELS,
   SUNSAM_MCPB_CHANNELS,
+  type SunsamMarketplaceBridge,
   type SunsamMcpbBridge,
   type SunsamMcpbUserValues,
 } from "@zcode/shared";
@@ -833,6 +835,14 @@ contextBridge.exposeInMainWorld("zcode", {
       ipcRenderer.invoke(SUNSAM_MCPB_CHANNELS.browse, kind, currentPath),
     relaunch: () => ipcRenderer.invoke(SUNSAM_MCPB_CHANNELS.relaunch),
   } satisfies SunsamMcpbBridge,
+  /** Sunsam: marketplaces de conectores MCP (.mcpb) */
+  sunsamMarketplace: {
+    list: (refresh?: boolean) => ipcRenderer.invoke(SUNSAM_MARKETPLACE_CHANNELS.list, refresh),
+    add: (source: string) => ipcRenderer.invoke(SUNSAM_MARKETPLACE_CHANNELS.add, source),
+    remove: (source: string) => ipcRenderer.invoke(SUNSAM_MARKETPLACE_CHANNELS.remove, source),
+    install: (source: string, connectorName: string) =>
+      ipcRenderer.invoke(SUNSAM_MARKETPLACE_CHANNELS.install, source, connectorName),
+  } satisfies SunsamMarketplaceBridge,
   /** 同步标题栏亮暗色 */
   setTitleBarTheme: (theme: DesktopTitleBarTheme) =>
     ipcRenderer.invoke(PlatformChannels.SetTitleBarTheme, theme),

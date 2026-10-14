@@ -315,3 +315,4 @@ export * from "./pluginStoreOrdering.js";
 export * from "./session-debug.js";
 export { redactFeedbackText } from "./feedbackPrivacy.js";
 export * from "./sunsamMcpb.js";
+export * from "./sunsamMarketplace.js";

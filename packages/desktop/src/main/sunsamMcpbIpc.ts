@@ -209,7 +209,8 @@ async function removeOldVersions(
   }
 }
 
-async function install(
+/** Instala o actualiza un paquete .mcpb/.dxt (también lo usa el marketplace). */
+export async function installSunsamMcpbPackage(
   file: { name: string; data: ArrayBuffer },
   logger: Logger,
 ): Promise<SunsamMcpbInstallResult> {
@@ -276,6 +277,24 @@ async function install(
   }
 }
 
+/** Versión instalada de cada extensión, por clave de servidor. */
+export async function readSunsamInstalledVersions(): Promise<Record<string, string>> {
+  const versions: Record<string, string> = {};
+  let files: string[] = [];
+  try {
+    files = await readdir(extensionsRoot());
+  } catch {
+    return versions;
+  }
+  for (const file of files) {
+    if (!file.endsWith(".sunsam.json")) continue;
+    const key = file.slice(0, -".sunsam.json".length);
+    const record = await readRecord(key);
+    if (record && existsSync(record.installDir)) versions[key] = record.version;
+  }
+  return versions;
+}
+
 async function configure(name: string, values: SunsamMcpbUserValues): Promise<McpServerConfig> {
   const record = await readRecord(name);
   if (!record || !existsSync(record.installDir)) {
@@ -322,7 +341,7 @@ export function registerSunsamMcpbIpcHandlers(logger: Logger): void {
   ipcMain.handle(
     SUNSAM_MCPB_CHANNELS.install,
     (_event, file: { name: string; data: ArrayBuffer }) =>
-      wrap(() => install(file, logger), logger),
+      wrap(() => installSunsamMcpbPackage(file, logger), logger),
   );
   ipcMain.handle(
     SUNSAM_MCPB_CHANNELS.configure,

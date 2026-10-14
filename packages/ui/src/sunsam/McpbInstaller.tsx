@@ -27,6 +27,7 @@ import { Input } from "@/components/ui/input.js";
 import { Switch } from "@/components/ui/switch.js";
 import { toast } from "@/components/ui/toast.js";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";
+import { SunsamMarketplaceSection } from "./MarketplaceSection.js";
 
 // El paquete ui no ve las declaraciones de window.zcode del renderer de escritorio (igual que
 // logger.ts): el puente se lee con un tipo local y no existe en web ni en remoto.
@@ -95,6 +96,28 @@ export function SunsamMcpbInstaller({ onRegister }: McpbInstallerProps) {
     [bridge, onRegister, t],
   );
 
+  // Tras instalar un paquete (arrastrado, elegido o del marketplace): avisos, formulario de
+  // ajustes si hace falta, y registro del servidor.
+  const processInstalled = useCallback(
+    async (result: SunsamMcpbInstallResult) => {
+      if (result.unsupportedPlatform) {
+        toast(t("sunsam.mcpb.platformWarning", { platforms: result.unsupportedPlatform }), {
+          variant: "warning",
+        });
+      }
+      const hasFields = Object.keys(result.userConfig).length > 0;
+      const missing = missingSunsamMcpbValues(result.userConfig, result.savedValues);
+      // Instalación nueva con ajustes, o actualización a la que le falta algo obligatorio:
+      // se pide la configuración. Una actualización completa conserva los valores guardados.
+      if (hasFields && (!result.previousVersion || missing.length > 0)) {
+        setQueue((current) => [...current, { result, values: result.savedValues }]);
+        return;
+      }
+      await finish(result, result.savedValues);
+    },
+    [finish, t],
+  );
+
   const installFiles = useCallback(
     async (files: File[]) => {
       if (!bridge) return;
@@ -114,27 +137,13 @@ export function SunsamMcpbInstaller({ onRegister }: McpbInstallerProps) {
             toast(t("sunsam.mcpb.error", { error: installed.error }), { variant: "warning" });
             continue;
           }
-          const result = installed.value;
-          if (result.unsupportedPlatform) {
-            toast(t("sunsam.mcpb.platformWarning", { platforms: result.unsupportedPlatform }), {
-              variant: "warning",
-            });
-          }
-          const hasFields = Object.keys(result.userConfig).length > 0;
-          const missing = missingSunsamMcpbValues(result.userConfig, result.savedValues);
-          // Instalación nueva con ajustes, o actualización a la que le falta algo obligatorio:
-          // se pide la configuración. Una actualización completa conserva los valores guardados.
-          if (hasFields && (!result.previousVersion || missing.length > 0)) {
-            setQueue((current) => [...current, { result, values: result.savedValues }]);
-            continue;
-          }
-          await finish(result, result.savedValues);
+          await processInstalled(installed.value);
         }
       } finally {
         setBusy(false);
       }
     },
-    [bridge, finish, t],
+    [bridge, processInstalled, t],
   );
 
   // Se escucha el arrastre en el contenedor padre (toda la sección "Servidores MCP") para no
@@ -240,6 +249,8 @@ export function SunsamMcpbInstaller({ onRegister }: McpbInstallerProps) {
           }}
         />
       </div>
+
+      <SunsamMarketplaceSection onInstalled={processInstalled} refreshToken={restartNames.length} />
 
       {dragging ? (
         <div className="pointer-events-none fixed inset-4 z-50 flex items-center justify-center rounded-xl border-2 border-dashed border-primary bg-background/85 text-ui-lg font-medium text-foreground">

@@ -1,5 +1,6 @@
 /* eslint-disable max-lines -- 桌面平台 IPC 集中装配，拆散会让权限边界更难审计；行数随平台能力增长。 */
 import { registerSunsamMcpbIpcHandlers } from "./sunsamMcpbIpc.js";
+import { registerSunsamMarketplaceIpcHandlers } from "./sunsamMarketplaceIpc.js";
 import { localizeSunsamEditors } from "./sunsamLocalizedEditors.js";
 import { BrowserWindow, dialog, ipcMain, nativeTheme } from "electron";
 import { readZCodeStdioTapDevState } from "@zcode/services/node";
@@ -137,6 +138,7 @@ export function registerPlatformIpcHandlers(options: {
   registerDesktopPrintToPdfIpcHandler(options.logger);
   // Sunsam: instalador de extensiones MCP .mcpb / .dxt.
   registerSunsamMcpbIpcHandlers(options.logger);
+  registerSunsamMarketplaceIpcHandlers(options.logger);
 
   ipcMain.handle(
     PlatformChannels.CreateTempTextAttachment,

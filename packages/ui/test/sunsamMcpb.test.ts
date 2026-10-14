@@ -181,3 +181,54 @@ test("Windows File Explorer is shown in the app language", async () => {
   );
   assert.equal(localizeSunsamEditors(editors, "zh-CN")[0]!.name, "资源管理器");
 });
+
+test("marketplace sources resolve to a marketplace.json URL", async () => {
+  const { resolveSunsamMarketplaceUrl, sunsamMarketplaceSourceKey } = await import("@zcode/shared");
+  assert.equal(
+    resolveSunsamMarketplaceUrl("jhonsu01/marketplace-SunsamCode"),
+    "https://raw.githubusercontent.com/jhonsu01/marketplace-SunsamCode/HEAD/marketplace.json",
+  );
+  assert.equal(
+    resolveSunsamMarketplaceUrl("owner/repo@dev"),
+    "https://raw.githubusercontent.com/owner/repo/dev/marketplace.json",
+  );
+  assert.equal(
+    resolveSunsamMarketplaceUrl("https://github.com/owner/repo.git"),
+    "https://raw.githubusercontent.com/owner/repo/HEAD/marketplace.json",
+  );
+  assert.equal(
+    resolveSunsamMarketplaceUrl("https://example.com/m.json"),
+    "https://example.com/m.json",
+  );
+  assert.throws(() => resolveSunsamMarketplaceUrl("http://example.com/m.json"), /https/u);
+  assert.throws(() => resolveSunsamMarketplaceUrl("not a source"), /owner\/repo/u);
+  assert.equal(
+    sunsamMarketplaceSourceKey("Jhonsu01/Marketplace-SunsamCode"),
+    sunsamMarketplaceSourceKey("jhonsu01/marketplace-SunsamCode"),
+  );
+});
+
+test("marketplace files are validated and versions compared semver-style", async () => {
+  const { parseSunsamMarketplace, compareSunsamVersions } = await import("@zcode/shared");
+  const file = parseSunsamMarketplace({
+    schemaVersion: 1,
+    name: "sunsam",
+    connectors: [
+      { name: "ok", version: "1.0.0", mcpb: { url: "https://x/ok.mcpb", sha256: "a".repeat(64) } },
+      { name: "insecure", version: "1.0.0", mcpb: { url: "http://x/insecure.mcpb" } },
+      { name: "broken" },
+    ],
+  });
+  assert.deepEqual(
+    file.connectors.map((c) => [c.name, c.displayName]),
+    [["ok", "ok"]],
+  );
+  assert.throws(
+    () => parseSunsamMarketplace({ schemaVersion: 2, connectors: [] }),
+    /schemaVersion/u,
+  );
+  assert.ok(compareSunsamVersions("1.10.3", "1.9.0") > 0);
+  assert.ok(compareSunsamVersions("v1.2.0", "1.2.0") === 0);
+  assert.ok(compareSunsamVersions("1.0.0", "1.0.0-beta.2") > 0);
+  assert.ok(compareSunsamVersions("1.0.4", "1.0.5") < 0);
+});
