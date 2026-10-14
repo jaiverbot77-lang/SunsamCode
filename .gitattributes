@@ -28,3 +28,7 @@ packages/ui/src/components/ui/ZCodeAboutLogo.tsx merge=ours
 # READMEs de Sunsam (es/en); la documentación original sigue enlazada en el repositorio de upstream.
 README.md merge=ours
 README.en.md merge=ours
+
+# Sunsam: los vendors de Gen UI se verifican por SHA-256 al empaquetar; con core.autocrlf en Windows
+# quedaban en CRLF y el build fallaba ("Gen UI vendor hash mismatch"). Se guardan byte a byte.
+apps/zcode-cli/packages/visualize-plugin/skills/visualize/assets/vendor/** -text
