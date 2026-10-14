@@ -1,0 +1,108 @@
+/*
+ * Sunsam: animación del logo de arranque. Reproduce la animación hecha en EffectCraft
+ * (branding/sunsam/animated/sunsam-logo-animated.ecproj): la placa aparece, los cuatro rayos
+ * salen del centro en cascada, el triángulo gira hasta su sitio con un brillo y después los
+ * rayos laten suavemente mientras la app carga. Sin JS ni dependencias, para que se vea ya en
+ * el primer pintado.
+ */
+.sunsam-logo-badge--animated {
+  animation: sunsam-logo-badge-in 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.sunsam-logo-mark .sunsam-logo-ray,
+.sunsam-logo-mark .sunsam-logo-tri {
+  transform-box: view-box;
+}
+
+.sunsam-logo-mark .sunsam-logo-ray {
+  transform-origin: 512px 512px;
+}
+
+.sunsam-logo-mark .sunsam-logo-tri {
+  transform-origin: 517px 488px;
+}
+
+.sunsam-logo-mark--animated .sunsam-logo-ray {
+  animation:
+    sunsam-logo-ray-in 0.5s cubic-bezier(0.2, 0.8, 0.3, 1.25) both,
+    sunsam-logo-ray-pulse 2.4s ease-in-out 1.8s infinite;
+  animation-delay: var(--sunsam-ray-delay, 0.3s), calc(var(--sunsam-ray-delay, 0.3s) + 1.5s);
+}
+
+.sunsam-logo-mark--animated .sunsam-logo-tri {
+  animation:
+    sunsam-logo-tri-in 0.65s cubic-bezier(0.2, 0.8, 0.3, 1.2) 0.55s both,
+    sunsam-logo-tri-glow 2.4s ease-in-out 1.8s infinite;
+}
+
+@keyframes sunsam-logo-badge-in {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes sunsam-logo-ray-in {
+  from {
+    opacity: 0;
+    transform: scale(0.55);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes sunsam-logo-ray-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes sunsam-logo-tri-in {
+  from {
+    opacity: 0;
+    transform: rotate(-120deg) scale(0);
+    filter: drop-shadow(0 0 0 rgba(253, 182, 115, 0));
+  }
+  60% {
+    opacity: 1;
+    transform: rotate(-12deg) scale(1.12);
+    filter: drop-shadow(0 0 40px rgba(253, 182, 115, 0.85));
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+    filter: drop-shadow(0 0 14px rgba(244, 65, 94, 0.35));
+  }
+}
+
+@keyframes sunsam-logo-tri-glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 14px rgba(244, 65, 94, 0.35));
+  }
+  50% {
+    filter: drop-shadow(0 0 30px rgba(253, 182, 115, 0.6));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sunsam-logo-badge--animated,
+  .sunsam-logo-mark--animated .sunsam-logo-ray,
+  .sunsam-logo-mark--animated .sunsam-logo-tri {
+    animation: none;
+  }
+}

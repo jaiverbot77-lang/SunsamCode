@@ -96,13 +96,13 @@ export function createCustomAboutDialogHtml(input: CustomAboutDialogHtmlInput): 
         justify-content: center;
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 12px;
-        background: linear-gradient(180deg, #000000 0%, #151718 100%);
+        background: linear-gradient(180deg, #1a1622 0%, #100e15 100%);
         color: #ffffff;
         box-shadow: 0 10px 13px -3px rgb(0 0 0 / 0.2), 0 4px 5px -3px rgb(0 0 0 / 0.2);
       }
 
       .app-logo {
-        width: 30px;
+        width: 36px;
         height: auto;
         display: block;
       }
@@ -173,22 +173,27 @@ export function createCustomAboutDialogHtml(input: CustomAboutDialogHtmlInput): 
           <div class="app-icon" aria-hidden="true">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="118"
+              width="116"
               height="100"
               fill="none"
-              viewBox="0 0 256 218"
+              viewBox="130 180 760 660"
               class="app-logo"
               focusable="false"
             >
-              <path
-                fill="currentColor"
-                d="M134.4 0.130152L116.48 25.6022C113.665 29.5699 109.054 32.0019 104.064 32.0019H6.3999V0C6.3999 0.130149 134.4 0.130152 134.4 0.130152Z"
-              />
-              <path fill="currentColor" d="M256 0.130127L102.401 217.732H0L153.599 0.130127H256Z" />
-              <path
-                fill="currentColor"
-                d="M121.601 217.732L139.65 192.134C142.465 188.166 147.076 185.734 152.067 185.734H249.604V217.736H121.601V217.732Z"
-              />
+              <defs>
+                <linearGradient id="sunsam-about-tri" x1="383" y1="394" x2="600" y2="640" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#FDB673" />
+                  <stop offset="0.55" stop-color="#F4415E" />
+                  <stop offset="1" stop-color="#DC447F" />
+                </linearGradient>
+              </defs>
+              <g stroke="#F4F1F7" stroke-width="26" stroke-linecap="round">
+                <path d="M475 208L489 285" />
+                <path d="M477 741L487 815" />
+                <path d="M156 510L228 487" />
+                <path d="M793 468L870 445" />
+              </g>
+              <path d="M383 394L733 442L436 629Z" fill="url(#sunsam-about-tri)" />
             </svg>
           </div>
           <h1 id="about-title" class="title">

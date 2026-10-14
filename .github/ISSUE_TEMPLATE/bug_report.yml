@@ -1,0 +1,51 @@
+name: Report a problem / Informar de un problema
+description: Something in Sunsam Code does not work as expected. / Algo de Sunsam Code no funciona como esperabas.
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve Sunsam Code. Before posting, check that screenshots and logs contain no private information.
+        Gracias por ayudar a mejorar Sunsam Code. Antes de publicar, revisa que las capturas y los registros no tengan información privada.
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened? / ¿Qué pasó?
+      description: Describe the problem and where it happened. / Describe el problema y dónde ocurrió.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce / Pasos para reproducirlo
+      placeholder: |
+        1. Open ...
+        2. Click ...
+        3. See ...
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result / Resultado esperado
+  - type: input
+    id: version
+    attributes:
+      label: Sunsam Code version / Versión de Sunsam Code
+      description: Help → About Sunsam Code. / Ayuda → Acerca de Sunsam Code.
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system / Sistema operativo
+      placeholder: Windows 11, macOS 15, Ubuntu 24.04...
+  - type: input
+    id: model
+    attributes:
+      label: Model and provider / Modelo y proveedor
+      placeholder: GLM-5.3 (Z.ai), Claude, OpenRouter...
+  - type: textarea
+    id: logs
+    attributes:
+      label: Screenshots or logs / Capturas o registros
+      description: "Drag images here. Logs: Help → Export logs. / Arrastra imágenes aquí. Registros: Ayuda → Exportar registros."

@@ -56,7 +56,8 @@ interface AboutSnapshotOptions {
   };
 }
 
-const ABOUT_APPLICATION_NAME = "ZCode Desktop App";
+// Sunsam: nombre propio del producto en el diálogo Acerca de.
+const ABOUT_APPLICATION_NAME = "SunsamCode Desktop App";
 // 自定义 About 内容本体是 256x280；原生窗口如果同尺寸会让内容贴满透明窗口边界。
 // 这里给 BrowserWindow 额外留出背景呼吸空间，避免正式 About 看起来比 demo 更局促。
 const ABOUT_WINDOW_WIDTH = 256;
@@ -72,54 +73,54 @@ const ABOUT_MESSAGES: Record<
   }
 > = {
   "zh-CN": {
-    aboutTitle: "关于 ZCode",
+    aboutTitle: "关于 SunsamCode",
     versionLabel: "版本",
     okButtonLabel: "确定",
     optimizedForAppleSilicon: "已针对 Apple Silicon 优化。",
-    copyright: (year) => `版权所有 © ${year} ZCode。`,
+    copyright: (year) => `${year} SunsamCode`,
   },
   "en-US": {
-    aboutTitle: "About ZCode",
+    aboutTitle: "About SunsamCode",
     versionLabel: "version",
     okButtonLabel: "OK",
     optimizedForAppleSilicon: "Optimized for Apple Silicon.",
-    copyright: (year) => `Copyright © ${year} ZCode.`,
+    copyright: (year) => `${year} SunsamCode`,
   },
   // Sunsam
   "es-ES": {
-    aboutTitle: "Acerca de Sunsam Code",
+    aboutTitle: "Acerca de SunsamCode",
     versionLabel: "versión",
     okButtonLabel: "Aceptar",
     optimizedForAppleSilicon: "Optimizado para Apple Silicon.",
-    copyright: (year) => `Copyright © ${year} ZCode / Sunsam Code.`,
+    copyright: (year) => `${year} SunsamCode`,
   },
   "pt-BR": {
-    aboutTitle: "Sobre o Sunsam Code",
+    aboutTitle: "Sobre o SunsamCode",
     versionLabel: "versão",
     okButtonLabel: "OK",
     optimizedForAppleSilicon: "Otimizado para Apple Silicon.",
-    copyright: (year) => `Copyright © ${year} ZCode / Sunsam Code.`,
+    copyright: (year) => `${year} SunsamCode`,
   },
   "fr-FR": {
-    aboutTitle: "À propos de Sunsam Code",
+    aboutTitle: "À propos de SunsamCode",
     versionLabel: "version",
     okButtonLabel: "OK",
     optimizedForAppleSilicon: "Optimisé pour Apple Silicon.",
-    copyright: (year) => `Copyright © ${year} ZCode / Sunsam Code.`,
+    copyright: (year) => `${year} SunsamCode`,
   },
   "ru-RU": {
-    aboutTitle: "О программе Sunsam Code",
+    aboutTitle: "О программе SunsamCode",
     versionLabel: "версия",
     okButtonLabel: "ОК",
     optimizedForAppleSilicon: "Оптимизировано для Apple Silicon.",
-    copyright: (year) => `Copyright © ${year} ZCode / Sunsam Code.`,
+    copyright: (year) => `${year} SunsamCode`,
   },
   "ko-KR": {
-    aboutTitle: "Sunsam Code 정보",
+    aboutTitle: "SunsamCode 정보",
     versionLabel: "버전",
     okButtonLabel: "확인",
     optimizedForAppleSilicon: "Apple Silicon에 최적화됨.",
-    copyright: (year) => `Copyright © ${year} ZCode / Sunsam Code.`,
+    copyright: (year) => `${year} SunsamCode`,
   },
 };
 

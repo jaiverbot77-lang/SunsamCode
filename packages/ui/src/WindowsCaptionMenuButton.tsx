@@ -59,7 +59,6 @@ export function WindowsCaptionMenuButton({
   const newTaskShortcutLabel = useShortcutCommandLabel("newTask");
   const openWorkspaceShortcutLabel = useShortcutCommandLabel("openWorkspace");
   const openFeedbackSubmit = useFeedbackStore((state) => state.openSubmit);
-  const openFeatureRequest = useFeedbackStore((state) => state.openFeatureRequest);
   const helpMenuActions = createHelpMenuActionHandlers({
     platform,
     intl,
@@ -265,7 +264,7 @@ export function WindowsCaptionMenuButton({
         <DropdownMenuItem onSelect={helpMenuActions.openIssueReport}>
           {intl.formatMessage({ id: "titleBar.menu.help.feedback" })}
         </DropdownMenuItem>
-        <DropdownMenuItem onSelect={openFeatureRequest}>
+        <DropdownMenuItem onSelect={helpMenuActions.openFeatureRequest}>
           {intl.formatMessage({ id: "workspaceHeader.help.productRequest" })}
         </DropdownMenuItem>
         {showCommunityMenuItem ? (

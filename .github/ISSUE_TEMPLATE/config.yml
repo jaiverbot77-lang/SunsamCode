@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Documentation / Documentación
+    url: https://jhonsu01.github.io/SunsamCode/documentation.html
+    about: Guides for installing, configuring and using Sunsam Code. / Guías para instalar, configurar y usar Sunsam Code.
+  - name: MCP connector marketplace / Marketplace de conectores MCP
+    url: https://github.com/jhonsu01/marketplace-SunsamCode
+    about: Problems with a connector go to its own repository. / Los problemas de un conector van a su propio repositorio.

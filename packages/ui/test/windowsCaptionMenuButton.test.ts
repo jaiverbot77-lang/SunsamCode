@@ -205,15 +205,18 @@ describe("WindowsCaptionMenuButton", () => {
       ?.onSelect?.();
 
     expect(capturedWindowsCaptionMenu.captureWindowScreenshot).not.toHaveBeenCalled();
-    expect(capturedWindowsCaptionMenu.openSubmit).toHaveBeenCalledWith(
-      expect.objectContaining({
-        type: "bug",
-        includeLogs: true,
-        screenshots: [],
-      }),
+    // Sunsam: problemas y solicitudes de funciones abren issues de GitHub; la documentación es propia.
+    expect(capturedWindowsCaptionMenu.openSubmit).not.toHaveBeenCalled();
+    expect(capturedWindowsCaptionMenu.openFeatureRequest).not.toHaveBeenCalled();
+    expect(capturedWindowsCaptionMenu.openExternal).toHaveBeenCalledWith(
+      expect.stringMatching(/^https:\/\/github\.com\/jhonsu01\/SunsamCode\/issues\/new\?template=bug_report\.yml&version=/),
     );
-    expect(capturedWindowsCaptionMenu.openFeatureRequest).toHaveBeenCalledTimes(1);
-    expect(capturedWindowsCaptionMenu.openExternal).toHaveBeenCalledWith("https://zcode.z.ai/docs");
+    expect(capturedWindowsCaptionMenu.openExternal).toHaveBeenCalledWith(
+      "https://github.com/jhonsu01/SunsamCode/issues/new?template=feature_request.yml",
+    );
+    expect(capturedWindowsCaptionMenu.openExternal).toHaveBeenCalledWith(
+      "https://jhonsu01.github.io/SunsamCode/documentation.html",
+    );
     expect(capturedWindowsCaptionMenu.exportLogs).toHaveBeenCalledTimes(1);
   });
 
