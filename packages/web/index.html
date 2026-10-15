@@ -170,7 +170,7 @@
         align-items: center;
         justify-content: center;
         border-radius: 24px;
-        background: linear-gradient(180deg, #000000 0%, #151718 100%);
+        background: linear-gradient(180deg, #1a1622 0%, #100e15 100%);
         box-shadow:
           0 20px 25px -5px rgb(0 0 0 / 0.2),
           0 8px 10px -6px rgb(0 0 0 / 0.2);
@@ -191,6 +191,78 @@
         height: auto;
         color: #ffffff;
       }
+          /* Sunsam: logo de arranque animado; al cargar React el logo de RootStartupLoading sigue
+         solo con el latido (html[data-sunsam-boot-logo]) para no repetir la entrada. */
+      .sunsam-boot-mark {
+        overflow: visible;
+      }
+      .sunsam-boot-ray,
+      .sunsam-boot-tri {
+        transform-box: view-box;
+      }
+      .sunsam-boot-ray {
+        transform-origin: 512px 512px;
+        animation:
+          sunsam-boot-ray-in 0.5s cubic-bezier(0.2, 0.8, 0.3, 1.25) both,
+          sunsam-boot-ray-pulse 2.4s ease-in-out infinite;
+        animation-delay: var(--sunsam-ray-delay), calc(var(--sunsam-ray-delay) + 1.5s);
+      }
+      .sunsam-boot-tri {
+        transform-origin: 517px 488px;
+        animation:
+          sunsam-boot-tri-in 0.65s cubic-bezier(0.2, 0.8, 0.3, 1.2) 0.55s both,
+          sunsam-boot-tri-glow 2.4s ease-in-out 1.8s infinite;
+      }
+      @keyframes sunsam-boot-ray-in {
+        from {
+          opacity: 0;
+          transform: scale(0.55);
+        }
+        60% {
+          opacity: 1;
+          transform: scale(1.08);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      @keyframes sunsam-boot-ray-pulse {
+        50% {
+          transform: scale(1.06);
+        }
+      }
+      @keyframes sunsam-boot-tri-in {
+        from {
+          opacity: 0;
+          transform: rotate(-120deg) scale(0);
+        }
+        60% {
+          opacity: 1;
+          transform: rotate(-12deg) scale(1.12);
+          filter: drop-shadow(0 0 40px rgba(253, 182, 115, 0.85));
+        }
+        to {
+          opacity: 1;
+          transform: none;
+          filter: drop-shadow(0 0 14px rgba(244, 65, 94, 0.35));
+        }
+      }
+      @keyframes sunsam-boot-tri-glow {
+        0%,
+        100% {
+          filter: drop-shadow(0 0 14px rgba(244, 65, 94, 0.35));
+        }
+        50% {
+          filter: drop-shadow(0 0 30px rgba(253, 182, 115, 0.6));
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .sunsam-boot-ray,
+        .sunsam-boot-tri {
+          animation: none;
+        }
+      }
     </style>
   </head>
   <body>
@@ -205,46 +277,30 @@
       >
         <div class="zcode-boot-loading__logo-shell">
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="118px"
-            height="100px"
-            fill="none"
-            viewBox="0 0 256 218"
-            class="zcode-boot-loading__logo"
-            aria-hidden="true"
-          >
-            <path
-              fill="currentColor"
-              d="M134.4 0.130152L116.48 25.6022C113.665 29.5699 109.054 32.0019 104.064 32.0019H6.3999V0C6.3999 0.130149 134.4 0.130152 134.4 0.130152Z"
-            >
-              <animate
-                attributeName="opacity"
-                dur="1.5s"
-                repeatCount="indefinite"
-                values="1;0.3;1"
-              />
-            </path>
-            <path fill="currentColor" d="M256 0.130127L102.401 217.732H0L153.599 0.130127H256Z">
-              <animate
-                attributeName="opacity"
-                begin="0.75s"
-                dur="1.5s"
-                repeatCount="indefinite"
-                values="1;0.3;1"
-              />
-            </path>
-            <path
-              fill="currentColor"
-              d="M121.601 217.732L139.65 192.134C142.465 188.166 147.076 185.734 152.067 185.734H249.604V217.736H121.601V217.732Z"
-            >
-              <animate
-                attributeName="opacity"
-                dur="1.5s"
-                repeatCount="indefinite"
-                values="1;0.3;1"
-              />
-            </path>
-          </svg>
+          xmlns="http://www.w3.org/2000/svg"
+          width="116"
+          height="100"
+          fill="none"
+          viewBox="130 180 760 660"
+          class="zcode-boot-loading__logo sunsam-boot-mark"
+          aria-hidden="true"
+        >
+          <!-- Sunsam: logo animado (mismo movimiento que packages/ui/src/sunsam/sunsamAnimatedLogo.css). -->
+          <defs>
+            <linearGradient id="sunsam-boot-tri" x1="383" y1="394" x2="600" y2="640" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#FDB673" />
+              <stop offset="0.55" stop-color="#F4415E" />
+              <stop offset="1" stop-color="#DC447F" />
+            </linearGradient>
+          </defs>
+          <g stroke="#F4F1F7" stroke-width="26" stroke-linecap="round">
+            <path class="sunsam-boot-ray" style="--sunsam-ray-delay: 0.3s" d="M475 208L489 285" />
+            <path class="sunsam-boot-ray" style="--sunsam-ray-delay: 0.38s" d="M793 468L870 445" />
+            <path class="sunsam-boot-ray" style="--sunsam-ray-delay: 0.46s" d="M477 741L487 815" />
+            <path class="sunsam-boot-ray" style="--sunsam-ray-delay: 0.54s" d="M156 510L228 487" />
+          </g>
+          <path class="sunsam-boot-tri" d="M383 394L733 442L436 629Z" fill="url(#sunsam-boot-tri)" />
+        </svg>
         </div>
       </div>
     </div>

@@ -1862,7 +1862,10 @@ export function createBotsService(
 
   async function readMessageLocale(): Promise<Locale | undefined> {
     const settings = await deps.settingService?.get().catch(() => null);
-    cachedLocale = settings?.locale ?? cachedLocale;
+    // Sunsam: los bots sólo tienen textos zh-CN/en-US y comparan con "en-US" en muchos sitios;
+    // cualquier otro idioma de la app (es-ES, pt-BR…) se trata como inglés en vez de caer al chino.
+    const appLocale = settings?.locale ?? cachedLocale;
+    cachedLocale = appLocale === "zh-CN" ? "zh-CN" : "en-US";
     return cachedLocale;
   }
 

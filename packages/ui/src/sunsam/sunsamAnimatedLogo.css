@@ -99,6 +99,20 @@
   }
 }
 
+/* La pantalla de arranque del escritorio (index.html) ya mostró la entrada: aquí solo el latido. */
+html[data-sunsam-boot-logo] .sunsam-logo-badge--animated {
+  animation: none;
+}
+
+html[data-sunsam-boot-logo] .sunsam-logo-mark--animated .sunsam-logo-ray {
+  animation: sunsam-logo-ray-pulse 2.4s ease-in-out infinite;
+}
+
+html[data-sunsam-boot-logo] .sunsam-logo-mark--animated .sunsam-logo-tri {
+  filter: drop-shadow(0 0 14px rgba(244, 65, 94, 0.35));
+  animation: sunsam-logo-tri-glow 2.4s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .sunsam-logo-badge--animated,
   .sunsam-logo-mark--animated .sunsam-logo-ray,

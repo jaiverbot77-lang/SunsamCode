@@ -8,6 +8,17 @@ import { ZCODE_VERSION } from "@zcode/shared";
  */
 export const SUNSAM_REPOSITORY_URL = "https://github.com/jhonsu01/SunsamCode";
 
+/** Avisos de seguridad privados (Private vulnerability reporting de GitHub). */
+export const SUNSAM_SECURITY_REPORT_URL = `${SUNSAM_REPOSITORY_URL}/security/advisories/new`;
+
+/**
+ * Sustituye a useVulnerabilityReportUrl de upstream, cuya URL llega de la configuración remota de
+ * Z.ai (zsrcUrl → src.zhipuai.cn). En Sunsam siempre es el formulario privado de GitHub.
+ */
+export function useSunsamVulnerabilityReportUrl(_open: boolean): { url: string; loading: false } {
+  return { url: SUNSAM_SECURITY_REPORT_URL, loading: false };
+}
+
 export type SunsamIssueKind = "bug" | "feature";
 
 const TEMPLATES: Record<SunsamIssueKind, string> = {

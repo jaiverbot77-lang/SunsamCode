@@ -30,7 +30,7 @@ import { ControlHintTooltip } from "@/ControlHintTooltip.js";
 import { useFeedbackStore } from "@/feedback/feedbackStore.js";
 import { useDesktopUpdateMenu } from "@/hooks/useDesktopUpdateMenu.js";
 import { usePlatform } from "@/hooks/usePlatform.js";
-import { useVulnerabilityReportUrl } from "@/hooks/useVulnerabilityReportUrl.js";
+import { useSunsamVulnerabilityReportUrl } from "@/sunsam/githubIssues.js";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";
 import { createHelpMenuActionHandlers } from "@/lib/helpMenuActions.js";
 
@@ -49,7 +49,8 @@ export function WorkspaceHelpMenuButton({
   const platform = usePlatform();
   const [open, setOpen] = useState(false);
   const { url: vulnerabilityReportUrl, loading: vulnerabilityReportLoading } =
-    useVulnerabilityReportUrl(open);
+    // Sunsam: avisos de seguridad en GitHub, no en el portal de Zhipu.
+    useSunsamVulnerabilityReportUrl(open);
   const updateMenu = useDesktopUpdateMenu(isDesktop);
   const openFeedbackSubmit = useFeedbackStore((state) => state.openSubmit);
   const helpMenuLabel = intl.formatMessage({ id: "workspaceHeader.help.menu" });

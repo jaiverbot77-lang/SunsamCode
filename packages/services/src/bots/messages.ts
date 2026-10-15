@@ -272,7 +272,10 @@ const messages = {
 export type BotMessageId = keyof (typeof messages)[BotMessageLocale];
 
 export function normalizeBotMessageLocale(locale: Locale | undefined): BotMessageLocale {
-  return locale === "en-US" ? "en-US" : DEFAULT_BOT_MESSAGE_LOCALE;
+  // Sunsam: sin idioma se conserva el valor por defecto de upstream; los idiomas añadidos por
+  // Sunsam (es-ES, pt-BR…) usan inglés en vez de caer al chino.
+  if (locale === undefined) return DEFAULT_BOT_MESSAGE_LOCALE;
+  return locale === "zh-CN" ? "zh-CN" : "en-US";
 }
 
 export function formatBotMessage(

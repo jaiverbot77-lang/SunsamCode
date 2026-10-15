@@ -285,11 +285,13 @@ describe("WorkspaceHeaderActionSection", () => {
       }),
     );
 
-    expect(capturedHeaderHelp.menuItems).toHaveLength(4);
+    // Sunsam: «Reportar vulnerabilidad» siempre aparece (GitHub), entre el informe y la solicitud.
+    expect(capturedHeaderHelp.menuItems).toHaveLength(5);
     await capturedHeaderHelp.menuItems[2]?.onSelect?.();
     capturedHeaderHelp.menuItems[1]?.onSelect?.();
     capturedHeaderHelp.menuItems[0]?.onSelect?.();
     capturedHeaderHelp.menuItems[3]?.onSelect?.();
+    capturedHeaderHelp.menuItems[4]?.onSelect?.();
 
     expect(capturedHeaderHelp.captureWindowScreenshot).not.toHaveBeenCalled();
     // Sunsam: problemas y solicitudes de funciones abren issues de GitHub; la documentación es propia.
@@ -304,6 +306,9 @@ describe("WorkspaceHeaderActionSection", () => {
     expect(capturedHeaderHelp.openCommunity).toHaveBeenCalledTimes(1);
     expect(capturedHeaderHelp.openExternal).toHaveBeenCalledWith(
       "https://jhonsu01.github.io/SunsamCode/documentation.html",
+    );
+    expect(capturedHeaderHelp.openExternal).toHaveBeenCalledWith(
+      "https://github.com/jhonsu01/SunsamCode/security/advisories/new",
     );
     expect(capturedHeaderHelp.exportLogs).not.toHaveBeenCalled();
   });
