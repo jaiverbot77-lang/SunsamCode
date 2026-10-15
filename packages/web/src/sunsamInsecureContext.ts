@@ -125,4 +125,15 @@ export function resolveSunsamSameOriginRelayWsUrl(
   return `${location.protocol === "https:" ? "wss" : "ws"}://${location.host}/ws`;
 }
 
+/**
+ * Los datos de emparejamiento (sid, hash, t) llegan en el fragmento `#` del QR para que no viajen
+ * en la petición HTTP; los enlaces antiguos los traen en la query. El fragmento manda.
+ */
+export function withSunsamFragmentParams(params: URLSearchParams, hash: string): URLSearchParams {
+  const merged = new URLSearchParams(params);
+  const fragment = new URLSearchParams(hash.replace(/^#/, ""));
+  for (const [key, value] of fragment) merged.set(key, value);
+  return merged;
+}
+
 installSunsamInsecureContextPolyfills();

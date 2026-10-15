@@ -4,6 +4,7 @@ import {
   hmacSha256,
   resolveSunsamSameOriginRelayWsUrl,
   sha256,
+  withSunsamFragmentParams,
 } from "../src/sunsamInsecureContext.js";
 
 const encoder = new TextEncoder();
@@ -58,5 +59,19 @@ describe("Sunsam insecure-context crypto", () => {
         fallback,
       ),
     ).toBe(fallback);
+  });
+
+  it("reads the pairing secrets from the URL fragment, which never reaches the network", () => {
+    const merged = withSunsamFragmentParams(
+      new URLSearchParams("mid=m&app_version=3.15.1-sunsam.14"),
+      "#sid=s1&hash=a%2Bb%3D&t=17",
+    );
+    expect(merged.get("sid")).toBe("s1");
+    expect(merged.get("hash")).toBe("a+b=");
+    expect(merged.get("app_version")).toBe("3.15.1-sunsam.14");
+    // Enlaces antiguos con todo en la query siguen funcionando.
+    expect(withSunsamFragmentParams(new URLSearchParams("sid=old&hash=h&t=1"), "").get("sid")).toBe(
+      "old",
+    );
   });
 });

@@ -1,5 +1,8 @@
 // Sunsam: primero, para que los sustitutos de contexto no seguro existan antes que el resto.
-import { resolveSunsamSameOriginRelayWsUrl } from "./sunsamInsecureContext.js";
+import {
+  resolveSunsamSameOriginRelayWsUrl,
+  withSunsamFragmentParams,
+} from "./sunsamInsecureContext.js";
 import { sessionCreateTelemetrySchema, type RendererTelemetryEventPayload } from "@zcode/shared";
 /* eslint-disable max-lines -- Web 远程控制启动、错误页和 web 平台桥接暂时集中在入口编排。 */
 import { createRoot } from "react-dom/client";
@@ -2437,7 +2440,9 @@ async function bootstrapWebApp() {
   }
 
   if (isWebRemoteControlRoute()) {
-    await bootstrapExternalRelayWebRemoteControl(params);
+    await bootstrapExternalRelayWebRemoteControl(
+      withSunsamFragmentParams(params, window.location.hash),
+    );
     return;
   }
 

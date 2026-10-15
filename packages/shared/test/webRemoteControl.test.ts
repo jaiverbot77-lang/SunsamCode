@@ -90,7 +90,7 @@ describe("external relay QR helpers", () => {
         theme: "zai-dark",
       }),
     ).toBe(
-      "https://zcode.z.ai/remote?sid=sid-1&hash=hash%2Bwith%2Fslash%3D&t=1710000000000&mid=mid-1&name=MacBook&app_version=1.5.0",
+      "https://zcode.z.ai/remote?mid=mid-1&name=MacBook&app_version=1.5.0#sid=sid-1&hash=hash%2Bwith%2Fslash%3D&t=1710000000000",
     );
   });
 

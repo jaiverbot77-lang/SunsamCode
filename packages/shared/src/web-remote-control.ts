@@ -280,9 +280,13 @@ export function buildWebRemoteControlExternalQrUrl({
   theme,
 }: BuildWebRemoteControlExternalQrUrlOptions): string {
   const url = new URL(baseUrl);
-  url.searchParams.set("sid", deviceSid);
-  url.searchParams.set("hash", passHash);
-  url.searchParams.set("t", String(timestamp));
+  // Sunsam: sid, hash y t van en el fragmento (#), que el navegador nunca envía por la red.
+  // El relay local sirve la página por HTTP en la LAN y así el hash no viaja en la petición.
+  const secrets = new URLSearchParams();
+  secrets.set("sid", deviceSid);
+  secrets.set("hash", passHash);
+  secrets.set("t", String(timestamp));
+  url.hash = secrets.toString();
 
   if (deviceMid?.trim()) {
     url.searchParams.set("mid", deviceMid);

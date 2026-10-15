@@ -280,8 +280,11 @@ export function createSunsamLocalRemoteServer(options: SunsamLocalRemoteServerOp
     const config = await readConfig();
     const sessions = await readJson<Record<string, string>>(sessionsPath, {});
     const relay = new SunsamLocalRelay((snapshot) => {
-      void mkdir(dirname(sessionsPath), { recursive: true })
-        .then(() => writeFile(sessionsPath, JSON.stringify(snapshot), "utf8"))
+      // Sólo el usuario: contiene los hashes con los que se empareja el teléfono.
+      void mkdir(dirname(sessionsPath), { recursive: true, mode: 0o700 })
+        .then(() =>
+          writeFile(sessionsPath, JSON.stringify(snapshot), { encoding: "utf8", mode: 0o600 }),
+        )
         .catch((error: unknown) =>
           options.logger.warn("[sunsam-remote] could not save sessions", {
             error: String(error),
