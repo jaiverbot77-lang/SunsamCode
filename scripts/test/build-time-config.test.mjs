@@ -15,13 +15,23 @@ async function writeDefaults(name, content) {
   return path;
 }
 
+// Sunsam: sin configuración privada la telemetría sigue apagada, pero la actualización automática
+// está activada (GitHub Releases del fork).
 test("没有私有默认配置也没有环境变量时三项能力都关闭", async () => {
   const config = await resolveBuildTimeConfig({}, { defaultsPath: join(dir, "missing.json") });
   assert.deepEqual(config, {
     armsRumEndpoint: "",
     telemetryReportEndpoint: "",
-    autoUpdateEnabled: false,
+    autoUpdateEnabled: true,
   });
+});
+
+test("Sunsam: ZCODE_AUTO_UPDATE=0 desactiva la actualización automática", async () => {
+  const config = await resolveBuildTimeConfig(
+    { ZCODE_AUTO_UPDATE: "0" },
+    { defaultsPath: join(dir, "missing.json") },
+  );
+  assert.equal(config.autoUpdateEnabled, false);
 });
 
 test("私有默认配置启用三项能力", async () => {

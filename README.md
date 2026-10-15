@@ -42,8 +42,9 @@ Installers are published under **[Releases](https://github.com/jhonsu01/SunsamCo
 The app **updates itself** from these Releases: on Windows and with the Linux AppImage the update button
 appears (on launch, every hour or via _Help → Check for updates_); on macOS download the new `.dmg`.
 
-## What's new in 3.15.1-sunsam.12
+## What's new in 3.15.1-sunsam.13
 
+- **Automatic updates are back**: the update button appears again when a new version is out, and _Help → Check for updates_ tells you whether you are on the latest one. The UI is now fully translated into Spanish, Portuguese, French, Russian and Korean.
 - **Based on ZCode 3.15.1**: UI Plugins (plugins with their own interface, such as an Excalidraw flow), web
   remote control from your phone, dynamic workflows and many fixes, merged without losing any Sunsam feature.
 - **Animated Sunsam logo** at startup and in the introduction (made with the EffectCraft connector, rendered

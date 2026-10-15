@@ -13,6 +13,14 @@ export const PRIVATE_BUILD_DEFAULTS_PATH = resolve(
 
 const ENABLED_VALUES = new Set(["1", "true", "yes"]);
 
+/**
+ * Sunsam: sin el archivo privado de Z.ai la actualización automática quedaba apagada y las versiones
+ * dejaban de detectar releases nuevos. Sunsam la activa por defecto (se actualiza desde los GitHub
+ * Releases del fork); `ZCODE_AUTO_UPDATE=0` o el archivo privado siguen pudiendo desactivarla.
+ * La telemetría de Z.ai sigue apagada.
+ */
+const SUNSAM_BUILD_DEFAULTS = Object.freeze({ ZCODE_AUTO_UPDATE: "1" });
+
 async function readPrivateDefaults(path) {
   try {
     const parsed = JSON.parse(await readFile(path, "utf8"));
@@ -37,7 +45,7 @@ export async function resolveBuildTimeConfig(
   env = process.env,
   { defaultsPath = PRIVATE_BUILD_DEFAULTS_PATH } = {},
 ) {
-  const defaults = await readPrivateDefaults(defaultsPath);
+  const defaults = { ...SUNSAM_BUILD_DEFAULTS, ...(await readPrivateDefaults(defaultsPath)) };
   return {
     armsRumEndpoint: pickValue(env, defaults, "ZCODE_ARMS_RUM_ENDPOINT"),
     telemetryReportEndpoint: pickValue(env, defaults, "ZCODE_TELEMETRY_REPORT_ENDPOINT"),

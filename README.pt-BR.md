@@ -36,8 +36,9 @@ Os instaladores são publicados em **[Releases](https://github.com/jhonsu01/Suns
 
 O app **se atualiza sozinho** a partir destes Releases: no Windows e com a AppImage do Linux aparece o botão de atualizar (ao iniciar, a cada hora ou em _Ajuda → Verificar atualizações_); no macOS baixe o novo `.dmg`.
 
-## Novidades da 3.15.1-sunsam.12
+## Novidades da 3.15.1-sunsam.13
 
+- **As atualizações automáticas voltaram**: o botão de atualizar aparece de novo quando sai uma versão e _Ajuda → Verificar atualizações_ informa se você está na mais recente. A interface agora está totalmente traduzida para espanhol, português, francês, russo e coreano.
 - **Baseado no ZCode 3.15.1**: UI Plugins (plugins com interface própria, como um fluxo com Excalidraw), controle remoto web pelo celular, fluxos de trabalho dinâmicos e muitas correções, integrados sem perder nenhum recurso do Sunsam.
 - **Logo do Sunsam animado** ao iniciar e na introdução (feito com o conector EffectCraft e convertido em SVG + CSS); a marca d'água inicial e o diálogo Sobre mostram a marca Sunsam.
 - **Documentação do produto** em 9 idiomas, em _Ajuda → Documentação_.
