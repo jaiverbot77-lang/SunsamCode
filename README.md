@@ -42,7 +42,7 @@ Installers are published under **[Releases](https://github.com/jhonsu01/SunsamCo
 The app **updates itself** from these Releases: on Windows and with the Linux AppImage the update button
 appears (on launch, every hour or via _Help → Check for updates_); on macOS download the new `.dmg`.
 
-## What's new in 3.15.1-sunsam.11
+## What's new in 3.15.1-sunsam.12
 
 - **Based on ZCode 3.15.1**: UI Plugins (plugins with their own interface, such as an Excalidraw flow), web
   remote control from your phone, dynamic workflows and many fixes, merged without losing any Sunsam feature.

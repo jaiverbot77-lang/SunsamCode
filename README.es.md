@@ -36,7 +36,7 @@ Los instaladores se publican en **[Releases](https://github.com/jhonsu01/SunsamC
 
 La app **se actualiza sola** desde estos Releases: en Windows y con la AppImage de Linux aparece el botón de actualizar (al iniciar, cada hora o en _Ayuda → Buscar actualizaciones_); en macOS descarga el nuevo `.dmg`.
 
-## Novedades de 3.15.1-sunsam.11
+## Novedades de 3.15.1-sunsam.12
 
 - **Basado en ZCode 3.15.1**: UI Plugins (plugins con interfaz propia, como un flujo con Excalidraw), control remoto web desde el móvil, flujos de trabajo dinámicos y muchas correcciones, integrados sin perder ninguna función de Sunsam.
 - **Logo de Sunsam animado** al iniciar y en la introducción (hecho con el conector EffectCraft y convertido a SVG + CSS); la marca de agua de inicio y el diálogo Acerca de muestran la marca Sunsam.

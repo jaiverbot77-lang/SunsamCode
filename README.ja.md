@@ -36,7 +36,7 @@ Sunsam Code は [ZCode](https://github.com/zai-org/ZCode)（Z.ai）のオープ�
 
 アプリはこれらの Releases から**自動更新**されます。Windows と Linux の AppImage では更新ボタンが表示されます（起動時、1 時間ごと、または _Help → Check for updates_）。macOS では新しい `.dmg` をダウンロードしてください。
 
-## 3.15.1-sunsam.11 の新機能
+## 3.15.1-sunsam.12 の新機能
 
 - **ZCode 3.15.1 ベース**：UI Plugins（Excalidraw のワークフローなど独自 UI を持つプラグイン）、スマートフォンからの Web リモートコントロール、動的ワークフロー、多数の修正を、Sunsam の機能を失わずに統合。
 - 起動時とイントロに **Sunsam のアニメーションロゴ**（EffectCraft コネクターで作成し SVG + CSS で実装）。ホームの透かしと About ダイアログも Sunsam ブランドに。
