@@ -7125,7 +7125,7 @@ const koKR: Record<string, string> = {
   "webRemoteControl.mobileHome.workspaceKind.conversation": "대화",
   "webRemoteControl.mobileHome.workspaceKind.local": "로컬",
   "webRemoteControl.mobileHome.workspaceKind.remote": "원격",
-  "webRemoteControl.mobileQr.description": "휴대폰 카메라로 이 워크스페이스를 원격으로 여세요.",
+  "webRemoteControl.mobileQr.description": "이 컴퓨터와 같은 Wi-Fi에 연결된 휴대폰으로 스캔하세요. 연결은 외부 서버를 거치지 않고 내 네트워크 안에서만 이루어집니다. 집 밖에서는 두 기기에 모두 Tailscale을 설치하세요.",
   "webRemoteControl.mobileQr.title": "휴대폰으로 스캔",
   "webRemoteControl.mobileShell.backHome": "작업 홈으로 돌아가기",
   "webRemoteControl.mobileShell.chatTitle": "작업 채팅",

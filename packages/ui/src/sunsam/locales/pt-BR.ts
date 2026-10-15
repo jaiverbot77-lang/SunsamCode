@@ -7315,7 +7315,7 @@ const ptBR: Record<string, string> = {
   "webRemoteControl.mobileHome.workspaceKind.conversation": "Conversa",
   "webRemoteControl.mobileHome.workspaceKind.local": "Local",
   "webRemoteControl.mobileHome.workspaceKind.remote": "Remoto",
-  "webRemoteControl.mobileQr.description": "Use a câmera do celular para abrir este espaço de trabalho remotamente.",
+  "webRemoteControl.mobileQr.description": "Escaneie com o celular na mesma rede Wi-Fi deste computador. A conexão fica na sua rede, sem servidores externos. Fora de casa, instale o Tailscale nos dois dispositivos.",
   "webRemoteControl.mobileQr.title": "Escanear pelo celular",
   "webRemoteControl.mobileShell.backHome": "Voltar ao início das tarefas",
   "webRemoteControl.mobileShell.chatTitle": "Chat da tarefa",

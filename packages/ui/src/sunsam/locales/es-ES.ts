@@ -7368,7 +7368,7 @@ const esES: Record<string, string> = {
   "webRemoteControl.mobileHome.workspaceKind.conversation": "Conversación",
   "webRemoteControl.mobileHome.workspaceKind.local": "Local",
   "webRemoteControl.mobileHome.workspaceKind.remote": "Remoto",
-  "webRemoteControl.mobileQr.description": "Usa la cámara del teléfono para abrir este espacio de trabajo a distancia.",
+  "webRemoteControl.mobileQr.description": "Escanéalo con el teléfono conectado a la misma Wi-Fi que este equipo. La conexión no sale de tu red ni pasa por servidores externos. Fuera de casa, instala Tailscale en los dos dispositivos.",
   "webRemoteControl.mobileQr.title": "Escanear desde el teléfono",
   "webRemoteControl.mobileShell.backHome": "Volver al inicio de tareas",
   "webRemoteControl.mobileShell.chatTitle": "Chat de la tarea",

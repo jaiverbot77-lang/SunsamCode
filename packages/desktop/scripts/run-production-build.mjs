@@ -62,6 +62,25 @@ export function createDesktopProductionBuildPlan({ cwd, baseEnv = process.env })
         },
       ],
     },
+    // Sunsam: la página móvil del control remoto va dentro de la app (out/remote-web) y la sirve
+    // el servidor local de sunsamLocalRemoteRelay.ts; el relay de zcode.z.ai no acepta Sunsam.
+    {
+      label: "sunsam mobile remote control page",
+      command: "pnpm",
+      args: [
+        "--filter",
+        "@zcode/web",
+        "exec",
+        "vite",
+        "build",
+        "--base=/remote/v4/",
+        `--outDir=${resolve(cwd, "out/remote-web")}`,
+        "--emptyOutDir",
+        "--sourcemap=false",
+      ],
+      cwd,
+      env,
+    },
   ];
 }
 

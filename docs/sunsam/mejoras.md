@@ -117,7 +117,7 @@ Así hay tres niveles: **teacher grande** (juez caro) → **Laya especializado**
 | 6   | **Logits completos con vLLM** (`logprobs=-1`) para End-Of-Token sin truncado top-k                                                                    | Medio   | Bajo                         |
 | 7   | **Arrancar Sunsam Mesh desde la app** (proceso gestionado por Main, como los demás servicios)                                                         | Medio   | Medio                        |
 | 8   | **Cuantización del SLM RLCD** a GGUF Q4_K_M / ONNX INT4 para portátiles sin GPU                                                                       | Medio   | Bajo                         |
-| 9   | **Mesh fuera de la LAN** (WireGuard/Tailscale + `advertiseUrl`)                                                                                       | Medio   | Bajo                         |
+| 9   | **Mesh fuera de la LAN** (WireGuard/Tailscale + `advertiseUrl`). El control remoto del móvil ya lo hace (3.15.1-sunsam.14: relay local + Tailscale)                                                                                       | Medio   | Bajo                         |
 | 10  | **Firma de binarios** (Apple Developer ID, certificado Windows) en el workflow                                                                        | Medio   | Bajo (requiere certificados) |
 | 11  | **zkML / pruebas de ejecución** (guía §7.3): publicar sólo hashes de validación                                                                       | Bajo    | Alto                         |
 

@@ -42,8 +42,9 @@ Installers are published under **[Releases](https://github.com/jhonsu01/SunsamCo
 The app **updates itself** from these Releases: on Windows and with the Linux AppImage the update button
 appears (on launch, every hour or via _Help → Check for updates_); on macOS download the new `.dmg`.
 
-## What's new in 3.15.1-sunsam.13
+## What's new in 3.15.1-sunsam.14
 
+- **Phone remote control without external servers**: the app now serves the mobile page and the pairing relay itself on your local network (the Z.ai relay rejected Sunsam builds with "Not found"). Scan the QR code on the same Wi-Fi; away from home, install Tailscale on both devices.
 - **Automatic updates are back**: the update button appears again when a new version is out, and _Help → Check for updates_ tells you whether you are on the latest one. The UI is now fully translated into Spanish, Portuguese, French, Russian and Korean.
 - **Based on ZCode 3.15.1**: UI Plugins (plugins with their own interface, such as an Excalidraw flow), web
   remote control from your phone, dynamic workflows and many fixes, merged without losing any Sunsam feature.

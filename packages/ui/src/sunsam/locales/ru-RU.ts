@@ -7285,7 +7285,7 @@ const ruRU: Record<string, string> = {
   "webRemoteControl.mobileHome.workspaceKind.conversation": "Беседа",
   "webRemoteControl.mobileHome.workspaceKind.local": "Локальное",
   "webRemoteControl.mobileHome.workspaceKind.remote": "Удалённое",
-  "webRemoteControl.mobileQr.description": "Откройте это рабочее пространство удалённо с помощью камеры телефона.",
+  "webRemoteControl.mobileQr.description": "Отсканируйте телефоном, подключённым к той же сети Wi-Fi, что и компьютер. Соединение не покидает вашу сеть и не идёт через внешние серверы. Вне дома установите Tailscale на оба устройства.",
   "webRemoteControl.mobileQr.title": "Сканировать телефоном",
   "webRemoteControl.mobileShell.backHome": "К списку задач",
   "webRemoteControl.mobileShell.chatTitle": "Чат задачи",

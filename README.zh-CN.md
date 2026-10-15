@@ -36,8 +36,9 @@ Sunsam Code 是 [ZCode](https://github.com/zai-org/ZCode)（Z.ai）的开源分�
 
 应用会从这些 Releases **自动更新**：在 Windows 和 Linux AppImage 上会出现更新按钮（启动时、每小时或通过 _帮助 → 检查更新_）；macOS 请下载新的 `.dmg`。
 
-## 3.15.1-sunsam.13 新内容
+## 3.15.1-sunsam.14 新内容
 
+- **无需外部服务器的手机远程控制**：应用直接在局域网内提供移动页面和配对中继（Z.ai 的中继会以 “Not found” 拒绝 Sunsam 版本）。在同一 Wi-Fi 下扫码；在外面时，请在两台设备上安装 Tailscale。
 - **自动更新回归**：有新版本时更新按钮会重新出现，_帮助 → 检查更新_ 会告诉你是否已是最新版本。界面已完整翻译为西班牙语、葡萄牙语、法语、俄语和韩语。
 - **基于 ZCode 3.15.1**：UI Plugins（拥有自己界面的插件，如 Excalidraw 工作流）、手机 Web 远程控制、动态工作流和大量修复，且未丢失任何 Sunsam 功能。
 - 启动与引导中的 **Sunsam 动画 Logo**（使用 EffectCraft 连接器制作，以 SVG + CSS 实现）；首页水印和“关于”对话框改为 Sunsam 品牌。

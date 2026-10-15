@@ -1974,7 +1974,7 @@ const enUS: Record<string, string> = {
   "webRemoteControl.generating": "Preparing QR code...",
   "webRemoteControl.qrAlt": "Web remote control QR code",
   "webRemoteControl.mobileQr.title": "Scan from phone",
-  "webRemoteControl.mobileQr.description": "Use your phone camera to open this workspace remotely.",
+  "webRemoteControl.mobileQr.description": "Scan with your phone on the same Wi-Fi as this computer. The connection stays on your network, with no external servers. Away from home, install Tailscale on both devices.",
   "webRemoteControl.statusTag.phone": "Phone",
   "webRemoteControl.statusTag.ready": "Ready",
   "webRemoteControl.botChannel.title": "Use a bot channel",

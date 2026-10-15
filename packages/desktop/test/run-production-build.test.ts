@@ -15,7 +15,7 @@ describe("createDesktopProductionBuildPlan", () => {
       baseEnv: { PATH: "/usr/bin" },
     });
 
-    expect(plan).toHaveLength(1);
+    expect(plan).toHaveLength(2);
     expect(plan[0]).toMatchObject({
       label: "desktop production bundles",
       parallel: [
@@ -37,6 +37,13 @@ describe("createDesktopProductionBuildPlan", () => {
         },
       ],
     });
+    // Sunsam: la página móvil del control remoto se compila dentro de out/ para el servidor local.
+    expect(plan[1]).toMatchObject({
+      label: "sunsam mobile remote control page",
+      command: "pnpm",
+      env: { NODE_ENV: "production" },
+    });
+    expect(plan[1]?.args).toContain("--base=/remote/v4/");
   });
 
   it("默认构建 cwd 应落在 desktop 包根目录，而不是 scripts 子目录", () => {

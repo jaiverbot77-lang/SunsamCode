@@ -1842,7 +1842,7 @@ const zhCN: Record<string, string> = {
   "webRemoteControl.generating": "正在准备二维码...",
   "webRemoteControl.qrAlt": "Web 远程控制二维码",
   "webRemoteControl.mobileQr.title": "手机扫码连接",
-  "webRemoteControl.mobileQr.description": "用手机相机扫码，在手机上打开这个工作区。",
+  "webRemoteControl.mobileQr.description": "手机需与本电脑连接同一 Wi-Fi 后扫码。连接只在你的网络内进行，不经过外部服务器。在外面使用时，请在两台设备上安装 Tailscale。",
   "webRemoteControl.statusTag.phone": "手机",
   "webRemoteControl.statusTag.ready": "已就绪",
   "webRemoteControl.botChannel.title": "使用 Bot Channel",

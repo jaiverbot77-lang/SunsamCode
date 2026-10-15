@@ -47,6 +47,7 @@ import {
 import type { UtilityProcess as ElectronUtilityProcess } from "electron";
 import { spawn } from "node:child_process";
 import { join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import { homedir, hostname } from "node:os";
 import {
   createCredentialService,
@@ -123,6 +124,7 @@ import {
   resolveExplicitStartupWorkspaceBootstrap,
 } from "./startupWorkspaceDeepLinkGate.js";
 import { createWebRemoteControlManager } from "./webRemoteControlManager.js";
+import { createSunsamLocalRemoteServer } from "./sunsamLocalRemoteRelay.js";
 import { createNodeWebRemoteControlRelayAuthProvider } from "./webRemoteControlRelayAuthProvider.js";
 import { createWebRemoteControlRelayAuthStorageProvider } from "./webRemoteControlRelayAuthStorageProvider.js";
 import { createWebRemoteControlFeatureGate } from "./webRemoteControlFeatureGate.js";
@@ -882,6 +884,13 @@ const defaultZCodeEndpointUrls = buildZCodeEndpointUrls(DEFAULT_ZCODE_ENDPOINT_O
 const webRemoteControlRelayWsEnvOverride =
   process.env["ZCODE_WEB_REMOTE_CONTROL_RELAY_WS_URL"]?.trim();
 const webRemoteControlUrlEnvOverride = process.env["ZCODE_WEB_REMOTE_CONTROL_URL"]?.trim();
+// Sunsam: el móvil se empareja con un relay y una página servidos por la propia app en la red
+// local (el relay de zcode.z.ai no acepta versiones Sunsam). Las variables de arriba lo anulan.
+const sunsamLocalRemoteServer = createSunsamLocalRemoteServer({
+  webRoot: fileURLToPath(new URL("../remote-web", import.meta.url)),
+  configDir: join(getZCodeDataRootDir(), "v2"),
+  logger,
+});
 
 function extractOpenWorkspacePathFromDeepLinkUrl(url: string): string | null {
   try {
@@ -910,13 +919,14 @@ const webRemoteControlManager = createWebRemoteControlManager({
     const derived = buildZCodeEndpointUrls(await resolveCurrentZCodeEndpointOrigin(), {
       appVersion: webRemoteControlAppVersion,
     });
+    const local =
+      webRemoteControlRelayWsEnvOverride && webRemoteControlUrlEnvOverride
+        ? undefined
+        : await sunsamLocalRemoteServer.getEndpoints();
     return {
       ...derived,
-      relayWsUrl: resolveWebRemoteControlRelayWsUrl({
-        endpointOrigin: derived.origin,
-        overrideUrl: webRemoteControlRelayWsEnvOverride,
-      }),
-      remoteUrl: webRemoteControlUrlEnvOverride || derived.remoteUrl,
+      relayWsUrl: webRemoteControlRelayWsEnvOverride || local?.relayWsUrl || derived.relayWsUrl,
+      remoteUrl: webRemoteControlUrlEnvOverride || local?.remoteUrl || derived.remoteUrl,
     };
   },
   relayWsUrl: resolveWebRemoteControlRelayWsUrl({

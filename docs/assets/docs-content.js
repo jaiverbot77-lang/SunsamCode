@@ -74,11 +74,24 @@ pnpm sunsam:mesh        # inicia la pasarela</pre>
 <p>En la app añade un proveedor compatible con OpenAI con la URL <code>http://127.0.0.1:4141</code> y elige <code>sunsam-auto</code>, <code>sunsam-local</code> o <code>sunsam-swarm</code>. Detalles en el <a href="https://github.com/jhonsu01/SunsamCode/blob/claude/nice-brown-v1jufb/packages/sunsam-mesh/README.md">README de Sunsam Mesh</a>.</p>`,
       },
       {
+        id: "remote",
+        title: "Control remoto desde el móvil",
+        html: `<p>Sigue y dirige tus tareas desde el navegador del teléfono. La conexión es <b>directa entre tu móvil y tu equipo</b>: la propia app sirve la página móvil y hace de relay, sin pasar por servidores externos.</p>
+<ol>
+<li>Abre el control remoto en la app y escanea el QR con el teléfono conectado a <b>la misma Wi-Fi</b> que el equipo.</li>
+<li>La primera vez, Windows pregunta si Sunsam Code puede usar la red: permítelo en <b>redes privadas</b>.</li>
+</ol>
+<p><b>Fuera de casa</b>: instala <a href="https://tailscale.com/download">Tailscale</a> en el equipo y en el teléfono con la misma cuenta. Con Tailscale activo, el QR usa la dirección de Tailscale (<code>100.x.y.z</code>) y funciona desde cualquier red. La conexión va cifrada de extremo a extremo entre tus dispositivos; también sirve WireGuard o cualquier VPN que tú controles.</p>
+<p>Para elegir la dirección del QR, crea <code>~/.zcode/v2/sunsam-remote-control.json</code>:</p>
+<pre>{ "host": "auto", "port": 47831 }</pre>
+<p><code>host</code>: <code>"auto"</code> (Tailscale si está activo, si no la red local), <code>"lan"</code>, <code>"tailscale"</code> o un nombre fijo como <code>"mi-pc.tail1234.ts.net"</code>. Si el puerto está ocupado, la app prueba los siguientes.</p>`,
+      },
+      {
         id: "features",
         title: "Funciones de la versión 3.15",
         html: `<ul>
 <li><b>UI Plugins</b>: plugins con interfaz propia dentro de la app (por ejemplo un flujo con Excalidraw para diagramas).</li>
-<li><b>Control remoto web</b>: sigue y dirige tus tareas desde el navegador del móvil.</li>
+<li><b>Control remoto web</b>: sigue y dirige tus tareas desde el navegador del móvil, conectado directamente a tu equipo (ver arriba).</li>
 <li><b>Flujos de trabajo dinámicos</b> y subagentes en segundo plano para tareas largas.</li>
 <li><b>Automatizaciones</b> programadas y tareas para el tiempo libre del equipo.</li>
 </ul>`,
@@ -186,6 +199,19 @@ pnpm sunsam:mesh        # inicia la pasarela</pre>
 <pre>pnpm sunsam:mesh:init   # creates ~/.sunsam/mesh.json (add your machines)
 pnpm sunsam:mesh        # starts the gateway</pre>
 <p>In the app add an OpenAI-compatible provider with the URL <code>http://127.0.0.1:4141</code> and pick <code>sunsam-auto</code>, <code>sunsam-local</code> or <code>sunsam-swarm</code>. Details in the <a href="https://github.com/jhonsu01/SunsamCode/blob/claude/nice-brown-v1jufb/packages/sunsam-mesh/README.md">Sunsam Mesh README</a>.</p>`,
+      },
+      {
+        id: "remote",
+        title: "Remote control from your phone",
+        html: `<p>Follow and steer your tasks from your phone's browser. The connection goes <b>straight between your phone and your computer</b>: the app itself serves the mobile page and acts as the relay, with no external servers in between.</p>
+<ol>
+<li>Open remote control in the app and scan the QR code with your phone on <b>the same Wi-Fi</b> as the computer.</li>
+<li>The first time, Windows asks whether Sunsam Code may use the network: allow it on <b>private networks</b>.</li>
+</ol>
+<p><b>Away from home</b>: install <a href="https://tailscale.com/download">Tailscale</a> on the computer and the phone with the same account. With Tailscale on, the QR code uses the Tailscale address (<code>100.x.y.z</code>) and works from any network. Traffic is end-to-end encrypted between your devices; WireGuard or any VPN you control works too.</p>
+<p>To choose the QR address, create <code>~/.zcode/v2/sunsam-remote-control.json</code>:</p>
+<pre>{ "host": "auto", "port": 47831 }</pre>
+<p><code>host</code>: <code>"auto"</code> (Tailscale when it is on, otherwise the local network), <code>"lan"</code>, <code>"tailscale"</code> or a fixed name such as <code>"my-pc.tail1234.ts.net"</code>. If the port is taken, the app tries the next ones.</p>`,
       },
       {
         id: "features",

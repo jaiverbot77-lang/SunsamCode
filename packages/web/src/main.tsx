@@ -1,3 +1,5 @@
+// Sunsam: primero, para que los sustitutos de contexto no seguro existan antes que el resto.
+import { resolveSunsamSameOriginRelayWsUrl } from "./sunsamInsecureContext.js";
 import { sessionCreateTelemetrySchema, type RendererTelemetryEventPayload } from "@zcode/shared";
 /* eslint-disable max-lines -- Web 远程控制启动、错误页和 web 平台桥接暂时集中在入口编排。 */
 import { createRoot } from "react-dom/client";
@@ -1341,10 +1343,13 @@ function resolveExternalRelayWsUrl(): string {
   const endpointOrigin =
     import.meta.env.VITE_ZCODE_BASE_URL?.trim() ||
     import.meta.env.VITE_ZCODE_ENDPOINT_ORIGIN?.trim();
-  return resolveWebRemoteControlRelayWsUrl({
-    endpointOrigin,
-    overrideUrl: import.meta.env.VITE_ZCODE_WEB_REMOTE_CONTROL_RELAY_WS_URL,
-  });
+  return resolveSunsamSameOriginRelayWsUrl(
+    window.location,
+    resolveWebRemoteControlRelayWsUrl({
+      endpointOrigin,
+      overrideUrl: import.meta.env.VITE_ZCODE_WEB_REMOTE_CONTROL_RELAY_WS_URL,
+    }),
+  );
 }
 
 function isZhLocale(): boolean {

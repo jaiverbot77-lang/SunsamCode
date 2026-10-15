@@ -1,0 +1,62 @@
+import { createHash, createHmac } from "node:crypto";
+import { describe, expect, it } from "vitest";
+import {
+  hmacSha256,
+  resolveSunsamSameOriginRelayWsUrl,
+  sha256,
+} from "../src/sunsamInsecureContext.js";
+
+const encoder = new TextEncoder();
+const hex = (bytes: Uint8Array) => Buffer.from(bytes).toString("hex");
+
+describe("Sunsam insecure-context crypto", () => {
+  it("matches Node's SHA-256 for empty, short and multi-block inputs", () => {
+    for (const input of ["", "abc", "x".repeat(55), "y".repeat(64), "z".repeat(1000)]) {
+      expect(hex(sha256(encoder.encode(input)))).toBe(
+        createHash("sha256").update(input).digest("hex"),
+      );
+    }
+  });
+
+  it("matches Node's HMAC-SHA256 with the relay proof format", () => {
+    const passHash = "q1w2e3r4t5y6u7i8o9p0+/base64hash=";
+    const message = "nonce123|terminal|deviceSid456";
+    expect(hex(hmacSha256(encoder.encode(passHash), encoder.encode(message)))).toBe(
+      createHmac("sha256", passHash).update(message).digest("hex"),
+    );
+    const longKey = "k".repeat(100);
+    expect(hex(hmacSha256(encoder.encode(longKey), encoder.encode(message)))).toBe(
+      createHmac("sha256", longKey).update(message).digest("hex"),
+    );
+  });
+
+  it("uses the page's own server for the relay unless the page is on z.ai", () => {
+    const fallback = "wss://zcode.z.ai/ws";
+    expect(
+      resolveSunsamSameOriginRelayWsUrl(
+        {
+          protocol: "http:",
+          host: "192.168.1.20:47831",
+          hostname: "192.168.1.20",
+        },
+        fallback,
+      ),
+    ).toBe("ws://192.168.1.20:47831/ws");
+    expect(
+      resolveSunsamSameOriginRelayWsUrl(
+        {
+          protocol: "https:",
+          host: "pc.tail.ts.net",
+          hostname: "pc.tail.ts.net",
+        },
+        fallback,
+      ),
+    ).toBe("wss://pc.tail.ts.net/ws");
+    expect(
+      resolveSunsamSameOriginRelayWsUrl(
+        { protocol: "https:", host: "zcode.z.ai", hostname: "zcode.z.ai" },
+        fallback,
+      ),
+    ).toBe(fallback);
+  });
+});
