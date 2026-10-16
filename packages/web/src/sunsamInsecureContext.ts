@@ -136,4 +136,60 @@ export function withSunsamFragmentParams(params: URLSearchParams, hash: string):
   return merged;
 }
 
+/**
+ * Copia texto sin la API Clipboard: textarea oculto + `execCommand("copy")`, que sí funciona por
+ * HTTP mientras dure el gesto del usuario (el toque en el botón de copiar).
+ */
+export function copyTextWithExecCommand(text: string, doc: Document = document): boolean {
+  const textarea = doc.createElement("textarea");
+  textarea.value = text;
+  textarea.setAttribute("readonly", "");
+  // Fuera de pantalla y con 16px: en iOS un tamaño menor hace zoom al enfocar.
+  textarea.style.cssText =
+    "position:fixed;top:0;left:-9999px;opacity:0;font-size:16px;pointer-events:none;";
+  doc.body.appendChild(textarea);
+  const selection = doc.getSelection();
+  const previousRange = selection && selection.rangeCount > 0 ? selection.getRangeAt(0) : null;
+  textarea.focus({ preventScroll: true });
+  textarea.select();
+  textarea.setSelectionRange(0, text.length);
+  let copied = false;
+  try {
+    copied = doc.execCommand("copy");
+  } catch {
+    copied = false;
+  }
+  textarea.remove();
+  if (previousRange && selection) {
+    selection.removeAllRanges();
+    selection.addRange(previousRange);
+  }
+  return copied;
+}
+
+/**
+ * Sin contexto seguro `navigator.clipboard` no existe y los botones de copiar (tablas, código,
+ * mensajes) fallaban con "clipboard-unavailable". Se instala un `writeText` equivalente; leer del
+ * portapapeles o copiar imágenes sigue sin ser posible por HTTP.
+ */
+export function installSunsamClipboardFallback(nav: Navigator = navigator): void {
+  if (nav.clipboard?.writeText) return;
+  const fallback = {
+    writeText: (text: string) =>
+      copyTextWithExecCommand(String(text))
+        ? Promise.resolve()
+        : Promise.reject(new DOMException("Copy command was rejected", "NotAllowedError")),
+    readText: () =>
+      Promise.reject(new DOMException("Clipboard read needs HTTPS", "NotAllowedError")),
+  };
+  try {
+    Object.defineProperty(nav, "clipboard", { value: fallback, configurable: true });
+  } catch {
+    // Navegador que no deja redefinirlo: los botones muestran su error de siempre.
+  }
+}
+
 installSunsamInsecureContextPolyfills();
+if (typeof navigator !== "undefined" && typeof document !== "undefined") {
+  installSunsamClipboardFallback();
+}

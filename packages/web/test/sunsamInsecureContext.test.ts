@@ -1,7 +1,9 @@
 import { createHash, createHmac } from "node:crypto";
 import { describe, expect, it } from "vitest";
 import {
+  copyTextWithExecCommand,
   hmacSha256,
+  installSunsamClipboardFallback,
   resolveSunsamSameOriginRelayWsUrl,
   sha256,
   withSunsamFragmentParams,
@@ -73,5 +75,44 @@ describe("Sunsam insecure-context crypto", () => {
     expect(withSunsamFragmentParams(new URLSearchParams("sid=old&hash=h&t=1"), "").get("sid")).toBe(
       "old",
     );
+  });
+
+  it("copies text without the Clipboard API, as served over HTTP on the LAN", async () => {
+    const copied: string[] = [];
+    const appended: Array<{ value: string; remove: () => void }> = [];
+    const doc = {
+      createElement: () => {
+        const el = {
+          value: "",
+          style: { cssText: "" },
+          setAttribute: () => {},
+          focus: () => {},
+          select: () => {},
+          setSelectionRange: () => {},
+          remove: () => appended.splice(appended.indexOf(el), 1),
+        };
+        return el;
+      },
+      body: { appendChild: (el: { value: string; remove: () => void }) => appended.push(el) },
+      getSelection: () => null,
+      execCommand: (command: string) => {
+        if (command !== "copy") return false;
+        copied.push(appended.at(-1)?.value ?? "");
+        return true;
+      },
+    } as unknown as Document;
+    expect(copyTextWithExecCommand("| a | b |", doc)).toBe(true);
+    expect(copied).toEqual(["| a | b |"]);
+    expect(appended).toHaveLength(0);
+
+    const nav = {} as Navigator;
+    installSunsamClipboardFallback(nav);
+    expect(typeof nav.clipboard.writeText).toBe("function");
+    await expect(nav.clipboard.readText()).rejects.toThrow();
+
+    const secure = { clipboard: { writeText: async () => {} } } as unknown as Navigator;
+    const original = secure.clipboard;
+    installSunsamClipboardFallback(secure);
+    expect(secure.clipboard).toBe(original);
   });
 });
