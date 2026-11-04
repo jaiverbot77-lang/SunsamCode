@@ -36,8 +36,9 @@ Sunsam Code 是 [ZCode](https://github.com/zai-org/ZCode)（Z.ai）的开源分�
 
 应用会从这些 Releases **自动更新**：在 Windows 和 Linux AppImage 上会出现更新按钮（启动时、每小时或通过 _帮助 → 检查更新_）；macOS 请下载新的 `.dmg`。
 
-## 3.17.1-sunsam.1 新内容
+## 3.17.2-sunsam.1 新内容
 
+- **基于 ZCode 3.17.2**：内置浏览器的本地 HTML 预览、附带建议步骤的 MCP 错误提示、草稿会话中的 MCP UI 应用、Windows 任务栏未读角标及更多修复。
 - **基于 ZCode 3.17.1**：向远程设备同步数据（技能、MCP、插件和模型设置）、可在后台继续连接的全新 SSH / WSL / Docker 远程连接向导、项目管理、内置 Word / PDF / PowerPoint / Excel 查看器、图片编辑器、任务分组、自定义指令和工具搜索。手机远程控制已适配新的配对协议，仍然只在你的网络内运行，无需 Z.ai 账号。整个界面已翻译为 Sunsam 支持的语言。
 - **手机上的复制按钮可用了**：远程控制中的复制图标（表格、代码、消息）因页面在局域网内通过 HTTP 提供而报 “clipboard-unavailable”，现在可以直接复制。
 - **无需外部服务器的手机远程控制**：应用直接在局域网内提供移动页面和配对中继（Z.ai 的中继会以 “Not found” 拒绝 Sunsam 版本）。在同一 Wi-Fi 下扫码；在外面时，请在两台设备上安装 Tailscale。

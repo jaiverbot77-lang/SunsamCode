@@ -8045,6 +8045,28 @@ const koKR: Record<string, string> = {
   "workspaceSidebar.sourceTaskUnavailable": "이 기기가 준비되지 않았습니다. 먼저 다시 연결하세요.",
   "zcode.error.offPeakTicketExpired": "이 유휴 시간 작업은 더 이상 계속할 수 없습니다. 새 유휴 시간 작업을 만드세요.",
   "zcode.error.providerBusiness.3106": "이번 실행이 1회 최대 실행 시간을 넘었습니다. 계속하려면 새 유휴 시간 작업을 만드세요.",
+  // Sunsam: claves nuevas de upstream 3.17.2 en esta traducción.
+  "settings.mcp.failure.adviceTitle": "권장 단계",
+  "settings.mcp.failure.errorDetails": "오류 세부 정보",
+  "settings.mcp.failureAdvice.coding_plan_required": "모델 설정에서 계정의 Coding Plan과 선택한 팀 또는 프로젝트를 확인하세요. 접근이 활성화되었는지 확인한 뒤 새로 고치세요.",
+  "settings.mcp.failureAdvice.config_invalid": "MCP 명령, 인수, 서버 주소, 환경 변수를 확인하세요. 설정을 수정한 뒤 상태를 새로 고치세요.",
+  "settings.mcp.failureAdvice.connection_failed": "아래 오류를 참고해 서버가 실행 중인지, 설정과 네트워크가 올바른지 확인하세요. 문제를 해결한 뒤 상태를 새로 고치세요.",
+  "settings.mcp.failureAdvice.connection_timeout": "서버가 실행 중인지 확인하고 네트워크와 프록시, 서버 로그를 점검하세요. 시작이 느리면 설정된 연결 시간 제한을 확인하세요.",
+  "settings.mcp.failureAdvice.network_unreachable": "MCP를 실행하는 기기가 서버 주소에 접근할 수 있는지 확인하세요. 프록시, VPN, 방화벽, 포트 설정을 점검하세요.",
+  "settings.mcp.failureAdvice.not_authenticated": "ZCode에 로그인한 뒤 MCP 상태를 새로 고치세요. 계정이 여전히 로그인된 것으로 보이면 다시 로그인하고 재시도하세요.",
+  "settings.mcp.failureAdvice.oauth_authorization_failed": "이 MCP 서버의 인증 링크를 다시 여세요. 브라우저에서 인증을 마친 뒤 ZCode로 돌아와 상태를 새로 고치세요.",
+  "settings.mcp.failureAdvice.official_origin_untrusted": "플러그인과 서버 주소가 신뢰할 수 있는 설정에서 왔는지 확인하세요. 보안 검사를 끄거나 알 수 없는 주소에 로그인 정보를 입력하지 마세요.",
+  "settings.mcp.failureAdvice.process_start_failed": "이 MCP를 실행하는 기기에서 시작 명령, 작업 디렉터리, 스크립트 경로, 실행 권한을 확인하세요. 해당 명령의 인터프리터나 가상 환경을 사용해 플러그인의 요구 사항 파일(예: requirements.txt)로 Python 의존성을 설치하세요. Node MCP라면 Node.js와 패키지 의존성을 확인하세요. 환경을 수정한 뒤 새로 고치세요.",
+  "settings.mcp.failureAdvice.protocol_error": "클라이언트와 서버의 MCP 버전을 확인하고 서버 로그의 프로토콜 오류를 검토하세요. 필요하면 플러그인이나 서버를 업데이트하세요.",
+  "settings.mcp.failureAdvice.protocol_negotiation_failed": "서버가 지원하는 MCP 버전을 확인하세요. 오래된 서버라면 설정에서 Legacy 모드를 사용해 보세요. 일반 로그가 프로토콜 출력에 기록되지 않도록 하세요.",
+  "settings.mcp.failureAdvice.rate_limited": "반복 재시도를 멈추세요. 속도 제한이 풀린 뒤 새로 고치고 계정의 요청 한도를 확인하세요.",
+  "settings.mcp.failureAdvice.runtime_unavailable": "이 MCP를 실행하는 기기에 필요한 런타임을 설치하거나 설정하고, ZCode가 시작 명령을 찾을 수 있는지 확인하세요.",
+  "settings.mcp.failureAdvice.server_internal_error": "나중에 다시 시도하세요. 문제가 계속되면 아래 오류와 요청 ID(있는 경우)를 서비스 제공자에게 전달하세요.",
+  "settings.mcp.failureAdvice.server_not_found": "서버 주소, 경로, 플러그인 버전을 확인하세요. 주소가 플러그인에서 왔다면 업데이트를 확인하거나 플러그인 제공자에게 문의하세요.",
+  "settings.mcp.failureAdvice.server_unavailable": "나중에 상태를 새로 고치세요. 문제가 계속되면 아래 오류와 요청 ID(있는 경우)를 서비스 제공자에게 전달하세요.",
+  "settings.mcp.failureAdvice.status_unavailable": "상태를 새로 고치세요. 계속 사용할 수 없으면 에이전트를 다시 시작하고 해당 기기의 로그를 확인하세요.",
+  "settings.mcp.failureAdvice.tool_list_failed": "서버 로그를 검토하고 tools/list가 올바른 MCP 도구 목록을 반환하는지 확인한 뒤 상태를 새로 고치세요.",
+  "settings.mcp.failureAdvice.unexpected_disconnect": "아래 오류와 서버 로그를 검토하세요. 프로세스가 종료되었는지, 의존성이 없는지, 연결이 끊겼는지 확인한 뒤 상태를 새로 고치세요.",
 };
 
 export default koKR;

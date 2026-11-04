@@ -8278,6 +8278,28 @@ const esES: Record<string, string> = {
   "workspaceSidebar.sourceTaskUnavailable": "Este dispositivo no está listo. Vuelve a conectarlo primero.",
   "zcode.error.offPeakTicketExpired": "Esta tarea de tiempo libre ya no puede continuar. Crea una nueva tarea de tiempo libre.",
   "zcode.error.providerBusiness.3106": "Esta ejecución superó el tiempo máximo por ejecución. Crea una nueva tarea de tiempo libre para continuar.",
+  // Sunsam: claves nuevas de upstream 3.17.2 en esta traducción.
+  "settings.mcp.failure.adviceTitle": "Pasos sugeridos",
+  "settings.mcp.failure.errorDetails": "Detalles del error",
+  "settings.mcp.failureAdvice.coding_plan_required": "En los ajustes de modelos, revisa el Coding Plan de la cuenta y el equipo o proyecto seleccionado. Actualiza tras confirmar que el acceso está activo.",
+  "settings.mcp.failureAdvice.config_invalid": "Revisa el comando MCP, los argumentos, la dirección del servidor y las variables de entorno. Corrige la configuración y actualiza el estado.",
+  "settings.mcp.failureAdvice.connection_failed": "Usa el error de abajo para comprobar que el servidor está en ejecución y que la configuración y la red son correctas. Corrige el problema y actualiza el estado.",
+  "settings.mcp.failureAdvice.connection_timeout": "Confirma que el servidor está en ejecución, revisa la red y el proxy, y mira los registros del servidor. Si tarda en iniciar, revisa el tiempo de espera de conexión configurado.",
+  "settings.mcp.failureAdvice.network_unreachable": "Comprueba que el dispositivo que ejecuta el MCP puede llegar a la dirección del servidor. Revisa el proxy, la VPN, el firewall y los puertos.",
+  "settings.mcp.failureAdvice.not_authenticated": "Inicia sesión en ZCode y actualiza el estado del MCP. Si la cuenta sigue apareciendo con la sesión iniciada, vuelve a iniciar sesión y reintenta.",
+  "settings.mcp.failureAdvice.oauth_authorization_failed": "Abre de nuevo el enlace de autorización de este servidor MCP. Completa la autorización en el navegador, vuelve a ZCode y actualiza el estado.",
+  "settings.mcp.failureAdvice.official_origin_untrusted": "Comprueba que el plugin y la dirección del servidor vienen de una configuración de confianza. No desactives las comprobaciones de seguridad ni introduzcas credenciales en una dirección desconocida.",
+  "settings.mcp.failureAdvice.process_start_failed": "En el dispositivo que ejecuta este MCP, revisa el comando de inicio, el directorio de trabajo, las rutas de los scripts y los permisos de ejecución. Instala las dependencias de Python desde el archivo de requisitos del plugin (como requirements.txt) con el intérprete o entorno virtual de ese comando. En los MCP de Node, revisa Node.js y las dependencias del paquete. Actualiza tras corregir el entorno.",
+  "settings.mcp.failureAdvice.protocol_error": "Revisa las versiones MCP del cliente y del servidor, y los errores de protocolo en los registros del servidor. Actualiza el plugin o el servidor si hace falta.",
+  "settings.mcp.failureAdvice.protocol_negotiation_failed": "Revisa las versiones MCP que admite el servidor. Si es un servidor antiguo, prueba el modo Legacy en su configuración. Asegúrate de que los registros normales no se escriben en la salida del protocolo.",
+  "settings.mcp.failureAdvice.rate_limited": "Deja de reintentar. Actualiza cuando pase el límite de frecuencia y revisa los límites de peticiones de la cuenta.",
+  "settings.mcp.failureAdvice.runtime_unavailable": "En el dispositivo que ejecuta este MCP, instala o configura el entorno que necesita y asegúrate de que ZCode encuentre el comando de inicio.",
+  "settings.mcp.failureAdvice.server_internal_error": "Inténtalo más tarde. Si el problema continúa, comparte con el proveedor del servicio el error de abajo y su ID de petición, si lo hay.",
+  "settings.mcp.failureAdvice.server_not_found": "Revisa la dirección del servidor, la ruta y la versión del plugin. Si la dirección viene de un plugin, busca actualizaciones o contacta con su proveedor.",
+  "settings.mcp.failureAdvice.server_unavailable": "Actualiza el estado más tarde. Si el problema continúa, comparte con el proveedor del servicio el error de abajo y su ID de petición, si lo hay.",
+  "settings.mcp.failureAdvice.status_unavailable": "Actualiza el estado. Si sigue sin estar disponible, reinicia el agente y revisa los registros del dispositivo correspondiente.",
+  "settings.mcp.failureAdvice.tool_list_failed": "Revisa los registros del servidor y confirma que tools/list devuelve una lista de herramientas MCP válida; después actualiza el estado.",
+  "settings.mcp.failureAdvice.unexpected_disconnect": "Revisa el error de abajo y los registros del servidor. Comprueba si el proceso terminó, falta una dependencia o se interrumpió la conexión; después actualiza el estado.",
 };
 
 export default esES;
